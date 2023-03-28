@@ -1,2 +1,2 @@
 <?php
-echo "Hello PHP " . phpversion();
+echo "Hello PHP! " . phpversion();
