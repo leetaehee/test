@@ -24,7 +24,7 @@ class mapping
     public function copyright() : void
     {
         // 본 메서드는 대체되지 않습니다.
-        echo "copyright all Right JinyPHP";
+        echo "copyright all Right JinyPHP..";
     }
 }
 
