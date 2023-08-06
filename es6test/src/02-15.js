@@ -10,3 +10,5 @@ obj.add = function(x,y) {
 obj.add(3,4);
 
 console.log(obj);
+
+const aa = 3;
