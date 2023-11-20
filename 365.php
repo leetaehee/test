@@ -5,6 +5,10 @@ $conn = mysqli_connect("127.0.0.1", 'root', 'dltkdghrytnsla1@', 'test');
 
 $result = mysqli_query($conn, "SELECT * from `emoticon`");
 
+// sql인젝션 안전하게 처리
+//$a_query = sprintf("select * from board_test where aa = '%s';", addslashes($aa));
+//echo $a_query . "<br>";
+
 /*
  [SAMPLE 테이블]
 
