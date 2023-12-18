@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>자바스크립트 캐시를 테스트합니다.</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+</head>
+
+<body>
+
+  <input type="radio" id="all" name="m_group" value="all"> <label for="all">전체</label>
+  <input type="radio" id="m" name="m_group" value="m"> <label for="m">남자</label>
+  <input type="radio" id="w" name="m_group" value="w"> <label for="w">여자</label>
+
+  <script>
+    $(function() {
+      $("#m").prop('checked', true).trigger('click'); // 안됨
+
+      $("input[name='m_group']").on("click", function() {
+        alert("value = "  + $(this).val());
+      });
+    });
+  </script>
+
+</html>
+</body>
