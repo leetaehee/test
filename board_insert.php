@@ -1,8 +1,6 @@
 <?php
     $conn = mysqli_connect("127.0.0.1", 'root', 'dltkdghrytnsla1@', 'test');
 
-    // 테스트입니다..
-
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $enterAA = nl2br(addslashes($_POST['aa']));
