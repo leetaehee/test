@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>소켓 io 테스트</title>
+
+    <!-- local에서는 http->https 해결 되면 가능 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.5/socket.io.js" integrity="sha512-luMnTJZ7oEchNDZAtQhgjomP1eZefnl82ruTH/3Oj/Yu5qYtwL7+dVRccACS/Snp1lFXq188XFipHKYE75IaQQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <h1>소켓 io를 이용해서 무엇을 만들 수 있는가?</h1>
+    <script>
+        const socket = io();
+
+        socket.emit('test_channel', 'test');
+
+        socket.on('test_channel', function(msg) {
+            alert('msg = ' + msg);
+        });
+    </script>
+</body>
+</html>
