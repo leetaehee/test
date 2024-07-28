@@ -8,3 +8,11 @@ echo "<pre>";
 print_r($_SERVER);
 
 echo "</pre>";
+
+$a = 3;
+
+$b = 4;
+
+$c = 5;
+
+echo "result = " . $a+$b+$c;
