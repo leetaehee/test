@@ -1,2 +1,2 @@
 <?php
-echo "Hello PHP! " . phpversion();
+echo "Hello PHP! " . date('Y-m-d H:i:s') . "=>" . phpversion();
