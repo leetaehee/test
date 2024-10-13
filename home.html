@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <title>자바스크립트</title>
+  </head>
+  <body>
+    <p>회원관리</p>
+
+    <div id="form_group">
+      이름 : <input type="text" id="name" name="name" value="이태희" /> <br>
+      연락처 : <input type="text" id="phone" name="phone" value="01027891039" /> <br>
+      성별 :
+      <select id="gender" name="gender">
+        <option value="">전체</option>
+        <option value="M">남</option>
+        <option value="W">여</option>
+      </select>
+      <br>
+
+      <label for="all_yn">
+        <input type="checkbox" id="all_yn"  /> 전체선택
+      </label>
+
+      <label for="mail_yn">
+        <input type="checkbox" id="mail_yn" name="receive_flag" class="receive" value="메일" /> 메일수신
+      </label>
+
+      <label for="call_yn">
+        <input type="checkbox" id="call_yn" name="receive_flag" class="receive" value="전화" /> 전화수신
+      </label>
+
+      <label for="kakao_yn">
+        <input type="checkbox" id="kakao_yn" name="receive_flag" class="receive" value="카카오" /> 카카오톡수신
+      </label>
+
+      <br>
+
+      <button type="button" id="btn_save">저장</button>
+      <br>
+    </div>
+
+    <br>
+
+    <div>
+      등록된 회원 정보는
+      <div id="member_info"></div>
+    </div>
+
+    <script>
+      const $p = document.querySelector("div");
+
+      const $inputName = document.querySelector("#name");
+      const $inputPhone = document.querySelector("#phone");
+      const $selectGender = document.querySelector("#gender");
+
+      const $chkAll = document.querySelector("#all_yn");
+      const $chkReceive = document.querySelectorAll(".receive");
+
+      const $btnSave = document.querySelector("#btn_save");
+
+      $selectGender.onchange = function() {
+        alert($selectGender.options[$selectGender.selectedIndex].innerText);
+      }
+
+      $btnSave.onclick = function() {
+        alert("이름 : " + $inputName.value);
+      }
+
+      $chkAll.onclick = function() {
+        $chkReceive.forEach(function(r) {
+          r.checked = $chkAll.checked;
+        });
+      }
+
+    </script>
+  </body>
+</html>
