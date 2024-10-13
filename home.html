@@ -55,6 +55,7 @@
       const $selectGender = document.querySelector("#gender");
 
       const $chkAll = document.querySelector("#all_yn");
+      const $chkKakao = document.querySelector("#kakao_yn");
       const $chkReceive = document.querySelectorAll(".receive");
 
       const $btnSave = document.querySelector("#btn_save");
@@ -72,6 +73,10 @@
           r.checked = $chkAll.checked;
         });
       }
+
+      $chkKakao.addEventListener("click", () => {
+        alert("체크 여부 = " + $chkKakao.checked);
+      });
 
     </script>
   </body>
