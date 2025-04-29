@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>뒤로가기 & 닫기 감지</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <h2>뒤로가기 또는 닫기 시 경고</h2>
+  <p>뒤로가기 버튼을 누르거나 브라우저를 닫아보세요.</p>
+
+  <script>
+    // [1] 브라우저 닫기 또는 새로고침 감지
+    $(window).on('beforeunload', function (e) {
+      e.preventDefault(); // 대부분의 브라우저에서 필수
+      e.returnValue = ''; // 크롬은 이 설정이 있어야 경고창 뜸
+    });
+
+    // [2] 뒤로가기 감지용 상태 저장
+    history.pushState(null, null, location.href);
+
+    // [3] 뒤로가기 누를 때 확인창 띄우기
+    $(window).on('popstate', function () {
+      // confirm은 크롬에서도 여기는 허용함
+      const leave = confirm("정말 이전 페이지로 이동하시겠습니까?");
+      if (leave) {
+        // 사용자 동의 시 실제 뒤로가기 실행
+        history.go(-2); // 한 단계 더 뒤로 (popstate 자체도 뒤로로 치기 때문)
+      } else {
+        // 취소 시 다시 현재 페이지 유지
+        history.pushState(null, null, location.href);
+      }
+    });
+  </script>
+</body>
+</html>
