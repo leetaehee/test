@@ -1,17 +1,7 @@
 <?php
 
-$searchWord = 'Gwendy Aniko';
-$name = 'Gwendy Aniko';
-$nameAlias = 'gwendy aniko';
+//echo preg_match("/[가-힣a-zA-Z]/","");
 
-// 소문자로 치환 후 비교
-$temp = strtolower($searchWord);
+$phoneRep = "/^(010)[0-9]{4}[0-9]{4}|(011|016|017|018|019)[0-9]{3}[0-9]{4}$/";
 
-//echo strpos($nameAlias, $temp);
-
-if (strpos($nameAlias, $temp) !== false) {
-    //echo '11';
-}
-
-echo str_replace(' ', '', '안녕 하세요');
-
+echo preg_match($phoneRep, '<script>alert("Fdfd")</script>');

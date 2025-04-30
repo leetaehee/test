@@ -1,4 +1,5 @@
 <?php
+
 $configAdd = false;
 
 $a = 3;
