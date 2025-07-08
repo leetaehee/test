@@ -25,6 +25,12 @@ function add(int $a,int $b) : int
     return $a+$b;
 }
 
+/**
+ * Undocumented function
+ *
+ * @param string $str
+ * @return string
+ */
 function echoNovi(string $str) : string
 {
     $rtnStr = $str;
