@@ -11,5 +11,17 @@ if ($configAdd === true) {
     $c = $a - $b;
 }
 
+//error_log("c = " . $c);
 
-echo $c;
+/**
+ * Undocumented function
+ *
+ * @param integer $a
+ * @param integer $b
+ * @return integer
+ */
+function add(int $a,int $b) : int {
+    return $a+$b;
+}
+
+error_log("xdebug.php");
