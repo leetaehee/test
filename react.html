@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>리액트 문법 최신</title>
+</head>
+<body>
+<script>
+  const member = {
+    fullname: '사토리오',
+    address: {
+      prefecture: '스즈오카현',
+      city: '후지에다시'
+    }
+  };
+
+  const { address, address: { city }} = member;
+
+  console.log(address);
+  console.log(city);
+</script>
+</body>
+</html>

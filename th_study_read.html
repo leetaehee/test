@@ -5,10 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>티에이치 쇼핑몰</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-   <!-- 추가-->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
   <style>
     body {
       background-color: #000;
@@ -109,37 +105,6 @@
     .detail-info-table td textarea,
     .detail-info-table td select {
       width: 100%;
-    }
-
-    /* 검색 폼 컨테이너 스타일 */
-    .search-section {
-      background-color: #111;
-      padding: 1rem;
-      margin-bottom: 2rem;
-      border-radius: 6px;
-    }
-    .search-section label {
-      color: white;
-      font-weight: 600;
-    }
-
-    .search-section button {
-      width: 100%;
-    }
-
-    .input-group-text {
-      display: inline-block; /* or default */
-      margin-top: 0 !important;
-      margin-bottom: 0 !important;
-      /* 혹시 아래처럼 block 들어가 있으면 문제 됨 */
-    }
-
-    .input-group > .form-control {
-      flex: 1 1 auto; /* ✅ 자동 너비로 줄어들게 */
-    }
-
-    .input-group > .input-group-text {
-      flex: 0 0 auto; /* ✅ 아이콘은 고정 사이즈 */
     }
   </style>
 </head>
@@ -273,111 +238,71 @@
   </button>
 </div>
 
-<div class="container my-5">
-  <h2 class="section-title mb-4">공지사항</h2>
+<!-- 콘덴츠 구현 -s -->
+<div class="container form-section">
+  <h2 class="section-title">게시글 상세보기</h2>
 
+  <!-- 제목 -->
+  <div class="mb-4 pb-3 border-bottom">
+    <h3 class="section-title-detail">📌 이것은 매우 긴 게시글 제목입니다. 길면 ... 말줄임</h3>
+  </div>
 
-  <!-- 검색 토글 버튼 -->
-  <button class="btn btn-outline-light mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#searchCollapse" aria-expanded="false" aria-controls="searchCollapse">
-    🔍 검색 열기/닫기
-  </button>
-
-  <!-- 검색 영역 (Collapse) -->
-  <form id="searchCollapse" action="/notice/search" method="get" class="collapse">
-    <div class="search-section bg-dark p-3 rounded mb-4">
-
-      <!-- 날짜 시작 -->
-      <div class="mb-3 position-relative">
-        <label for="dateFrom" class="form-label text-white fw-semibold">시작 날짜</label>
-        <div class="input-group">
-          <input type="text" class="form-control" id="dateFrom" name="dateFrom" placeholder="YYYY-MM-DD" autocomplete="off" />
-          <!--
-          <span class="input-group-text bg-secondary text-white">
-            <i class="bi bi-calendar3"></i>
-           </span>
-           -->
-        </div>
-      </div>
-
-
-      <!-- 날짜 종료 -->
-      <div class="mb-3 position-relative">
-        <label for="dateTo" class="form-label text-white fw-semibold">종료 날짜</label>
-        <div class="input-group">
-          <input type="text" class="form-control" id="dateTo" name="dateTo" placeholder="YYYY-MM-DD" autocomplete="off" />
-          <!--
-          <span class="input-group-text bg-secondary text-white">
-            <i class="bi bi-calendar3"></i>
-          </span>
-          -->
-        </div>
-      </div>
-
-      <!-- 제목 -->
-      <div class="mb-3">
-        <label for="title" class="form-label text-white fw-semibold">제목</label>
-        <input type="text" class="form-control" id="title" name="title" placeholder="제목을 입력하세요" />
-      </div>
-
-      <!-- 작성자 -->
-      <div class="mb-3">
-        <label for="author" class="form-label text-white fw-semibold">작성자</label>
-        <input type="text" class="form-control" id="author" name="author" placeholder="작성자명을 입력하세요" />
-      </div>
-
-      <!-- 검색 + 초기화 버튼 그룹 -->
-      <div class="d-flex flex-column flex-md-row gap-2">
-        <button type="submit" class="btn btn-warning flex-grow-1">검색</button>
-        <button type="button" id="btnReset" class="btn btn-secondary flex-grow-1">초기화</button>
-      </div>
-
-    </div>
-  </form>
-
-  <div class="section-title">공지사항</div>
-  <table class="table table-dark table-striped">
-    <thead>
-    <tr><th>No</th><th>제목</th><th>작성자</th><th>등록시각</th><th>👍</th></tr>
-    </thead>
+  <!-- 정보 (table) -->
+  <table class="detail-info-table">
     <tbody>
+    <tr>
+      <th>작성자</th>
+      <td>홍길동</td>
+    </tr>
+    <tr>
+      <th>연락처</th>
+      <td>010-1234-5678</td>
+    </tr>
+    <tr>
+      <th>등록시각</th>
+      <td>2025-07-29 21:59:59</td>
+    </tr>
     <!--
     <tr>
-      <td>10</td><td>공지사항 제목2222222222</td><td>작성자3</td><td>2025-06-23</td><td>97</td>
+      <th>수정일자</th>
+      <td>2025-07-29</td>
     </tr>
     -->
-
-    <tr class="no-data-row">
-      <td colspan="5">등록된 내용이 없습니다.</td>
+    <tr>
+      <th>이메일</th>
+      <td>example@thshop.com</td>
     </tr>
     </tbody>
   </table>
 
-  <!-- 글쓰기 버튼 -->
-  <div class="text-end my-3">
-    <a href="/boards/write" class="btn btn-warning">✏️ 글쓰기</a>
+  <!-- 내용 -->
+  <div class="mb-4">
+    <h5 class="section-subtitle">내용</h5>
+    <div class="p-4 border border-secondary rounded bg-dark text-white" style="min-height: 200px;">
+      이곳은 게시글의 자세한 내용을 보여주는 공간입니다.<br>
+      줄이 길어질 수도 있고 사용자가 길게 작성한 내용이 표시됩니다.<br>
+      이미지나 문서 등 다양한 설명이 들어갈 수 있습니다.
+    </div>
   </div>
 
-  <nav>
-    <ul class="pagination">
-      <!-- 맨 처음 -->
-      <li class="page-item">
-        <a class="page-link" href="#">«</a>
-      </li>
+  <!-- 첨부파일 -->
+  <div class="mb-4">
+    <h5 class="section-subtitle">첨부파일</h5>
+    <div class="border border-secondary rounded p-3">
+      <a href="https://picsum.photos/id/1005/800/600" target="_blank" class="link-warning d-block mb-1">📎 이미지_샘플1.jpg</a>
+      <a href="https://example.com/file.pdf" target="_blank" class="link-warning d-block">📎 문서_샘플.pdf</a>
+    </div>
+  </div>
 
-      <li class="page-item prev"><a class="page-link" href="#">‹</a></li>
-
-      <li class="page-item active"><a class="page-link" href="#">1</a></li>
-      <li class="page-item"><a class="page-link" href="#">2</a></li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
-      <li class="page-item"><a class="page-link" href="#">4</a></li>
-      <li class="page-item"><a class="page-link" href="#">5</a></li>
-
-      <li class="page-item next"><a class="page-link" href="#">›</a></li>
-
-      <li class="page-item"><a class="page-link" href="#">»</a></li>
-    </ul>
-  </nav>
+  <!-- 버튼 -->
+  <div class="text-end mt-5 mb-5">
+    <button type="button" class="btn btn-warning me-2">수정</button>
+    <button type="button" class="btn btn-danger me-2">삭제</button>
+    <button type="button" class="btn btn-secondary">목록</button>
+  </div>
 </div>
+<!-- 콘덴츠 구현 -e-->
+
 <!-- 풋터 -->
 <footer class="text-center py-4" style="background:#111;">
   <p>회사명: 티에이치 쇼핑몰 | 전화번호: 010-2789-1039</p>
@@ -387,12 +312,5 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-
-<script>
-  // flatpickr 초기화
-  flatpickr("#dateFrom", { dateFormat: "Y-m-d", locale: "ko", maxDate: "today" });
-  flatpickr("#dateTo", { dateFormat: "Y-m-d", locale: "ko", maxDate: "today" });
-</script>
 </body>
 </html>
