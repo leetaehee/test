@@ -60,6 +60,11 @@
       .pagination li.page-item.next {
         display: inline-block;
       }
+
+      /* PC에서 input-group 내 아이콘 중복시 숨기기 */
+      .input-group .input-group-text + .input-group-text {
+        display: none !important;
+      }
     }
 
     .text-ellipsis {
@@ -289,27 +294,18 @@
       <!-- 날짜 시작 -->
       <div class="mb-3 position-relative">
         <label for="dateFrom" class="form-label text-white fw-semibold">시작 날짜</label>
-        <div class="input-group">
-          <input type="text" class="form-control" id="dateFrom" name="dateFrom" placeholder="YYYY-MM-DD" autocomplete="off" />
-          <!--
-          <span class="input-group-text bg-secondary text-white">
-            <i class="bi bi-calendar3"></i>
-           </span>
-           -->
+        <div class="input-group" id="flatpickrFrom" data-wrap="true">
+          <input type="text" class="form-control" name="dateFrom" placeholder="YYYY-MM-DD" data-input />
+         <span class="input-group-text bg-secondary text-white" data-open><i class="bi bi-calendar3"></i></span>
         </div>
       </div>
 
-
       <!-- 날짜 종료 -->
       <div class="mb-3 position-relative">
-        <label for="dateTo" class="form-label text-white fw-semibold">종료 날짜</label>
-        <div class="input-group">
-          <input type="text" class="form-control" id="dateTo" name="dateTo" placeholder="YYYY-MM-DD" autocomplete="off" />
-          <!--
-          <span class="input-group-text bg-secondary text-white">
-            <i class="bi bi-calendar3"></i>
-          </span>
-          -->
+        <label for="dateTo" class="form-label text-white fw-semibold">시작 날짜</label>
+        <div class="input-group" id="flatpickrTo" data-wrap="true">
+          <input type="text" class="form-control" name="dateTo" placeholder="YYYY-MM-DD" data-input />
+          <span class="input-group-text bg-secondary text-white" data-open><i class="bi bi-calendar3"></i></span>
         </div>
       </div>
 
@@ -391,8 +387,8 @@
 
 <script>
   // flatpickr 초기화
-  flatpickr("#dateFrom", { dateFormat: "Y-m-d", locale: "ko", maxDate: "today" });
-  flatpickr("#dateTo", { dateFormat: "Y-m-d", locale: "ko", maxDate: "today" });
+  flatpickr("#flatpickrFrom", { dateFormat: "Y-m-d", locale: "ko", maxDate: "today", wrap: true, disableMobile: true  });
+  flatpickr("#flatpickrTo", { dateFormat: "Y-m-d", locale: "ko", maxDate: "today", wrap: true, disableMobile: true  });
 </script>
 </body>
 </html>
