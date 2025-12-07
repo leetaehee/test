@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>프로미스 예제</title>
+
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    </head>
+    <body>
+        <h1>Promise</h1>
+        <h1>async/await</h1>
+
+        <button type="button" id="btnPromiseTest">프로미스 비동기 테스트</button>
+
+        <script>
+
+            function delay(isPlay) {
+                return new Promise((resolve, reject) => {
+
+                    if (isPlay === false) {
+                        reject('실패!');
+                    }
+
+                    setTimeout(() => {
+                        resolve('성공!');
+                    }, 1000)
+                });
+            }
+
+            async function run() {
+                console.log(1);
+
+                await delay(true)
+                    .then(s => { console.log(s); })
+                    .catch(s2 => { console.log(s2)});
+
+                console.log(3);
+            }
+
+            async function promiseTest() {
+                return new Promise(async (resolve, reject) => {
+                    try {
+                        const res = await fetch("./promise.php");
+                        const data = await res.json();
+                        resolve(data);
+                    } catch (err) {
+                        resject(err);
+                    }
+                });
+            }
+
+            run();
+
+            $(function() {
+                $("#btnPromiseTest").on("click", function() {
+                    promiseTest()
+                        .then(e => { console.log(e)})
+                        .catch(e2 => { consol.log(e2)});
+                });
+            });
+        </script>
+    </body>
+</html>
