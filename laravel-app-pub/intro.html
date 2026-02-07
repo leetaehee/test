@@ -1,0 +1,734 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>티에이치그룹(TH Group) | 개발자 성장 플랫폼</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #0b1220;
+      --bg2: #0f1a2f;
+
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.72);
+
+      --accent: #7c5cff;
+      --accent2: #35d6ff;
+
+      --cardRadius: 18px;
+      --shadow: 0 14px 38px rgba(0,0,0,.35);
+    }
+
+    body{
+      background: radial-gradient(1200px 600px at 20% 10%, rgba(124,92,255,.22), transparent 55%),
+                  radial-gradient(900px 500px at 85% 12%, rgba(53,214,255,.18), transparent 55%),
+                  linear-gradient(180deg, var(--bg), var(--bg2));
+      color: var(--text);
+      letter-spacing: -.01em;
+    }
+
+    a { color: inherit; }
+    .muted { color: var(--muted); }
+    .section-pad { padding: 84px 0; }
+    .anchor-offset { scroll-margin-top: 92px; }
+
+    /* NAV */
+    .navbar{
+      background: rgba(9, 14, 26, .72) !important;
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,.08) !important;
+    }
+    .navbar .nav-link{ color: rgba(255,255,255,.78); }
+    .navbar .nav-link:hover{ color: rgba(255,255,255,.95); }
+    .navbar-brand{ letter-spacing: .03em; }
+
+    .btn-accent{
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border: 0;
+      color: #0b1220;
+      font-weight: 800;
+    }
+    .btn-accent:hover{ opacity: .95; }
+
+    /* Cards */
+    .soft-card{
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: var(--cardRadius);
+      box-shadow: var(--shadow);
+    }
+    .soft-card.flat{ box-shadow: none; }
+
+    /* Chips */
+    .chip{
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.04);
+      color: rgba(255,255,255,.90);
+      padding: .55rem .9rem;
+      border-radius: 999px;
+      font-weight: 650;
+      font-size: .92rem;
+    }
+
+    /* Placeholder images */
+    .img-ph{
+      background:
+        linear-gradient(135deg, rgba(124,92,255,.18), rgba(53,214,255,.10)),
+        rgba(255,255,255,.04);
+      border: 1px dashed rgba(255,255,255,.26);
+      border-radius: var(--cardRadius);
+      min-height: 230px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color: rgba(255,255,255,.75);
+      font-weight: 800;
+      letter-spacing:.08em;
+      text-transform: uppercase;
+      user-select: none;
+    }
+    .img-ph.sm{ min-height: 170px; }
+    .img-ph.lg{ min-height: 380px; }
+
+    /* Kicker + Title */
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:.5rem;
+      padding: .4rem .75rem;
+      border-radius: 999px;
+      background: rgba(124,92,255,.14);
+      border: 1px solid rgba(124,92,255,.25);
+      color: rgba(255,255,255,.88);
+      font-weight: 750;
+      font-size: .9rem;
+    }
+    .grad-title{
+      background: linear-gradient(135deg, rgba(255,255,255,.96), rgba(53,214,255,.9));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    /* Stats */
+    .stat{
+      padding: 22px;
+      border-radius: var(--cardRadius);
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.10);
+    }
+    .stat .num{
+      font-size: 2rem;
+      font-weight: 900;
+      letter-spacing: -.02em;
+      line-height: 1.1;
+    }
+    .stat .label{
+      color: rgba(255,255,255,.72);
+      margin-top: .25rem;
+      font-weight: 650;
+    }
+
+    footer{
+      border-top: 1px solid rgba(255,255,255,.10);
+    }
+
+    /* Back to top (모바일 안정 버전) */
+    #backToTop{
+      width: 54px;
+      height: 54px;
+      border-radius: 999px;
+      display: none;                 /* observer가 flex로 바꿔줌 */
+      z-index: 2147483647;           /* 최상단 */
+      box-shadow: 0 10px 26px rgba(0,0,0,.45);
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.16); /* '안 보이는 착시' 방지 */
+      backdrop-filter: blur(10px);
+      color: rgba(255,255,255,.95);
+      touch-action: manipulation;
+    }
+    #backToTop:hover{ background: rgba(255,255,255,.22); }
+
+    /* Modal theme */
+    .modal-content{
+      background: rgba(12, 18, 32, .92);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: var(--cardRadius);
+      color: var(--text);
+    }
+    .form-control, .form-select, textarea{
+      background: rgba(255,255,255,.06) !important;
+      border: 1px solid rgba(255,255,255,.14) !important;
+      color: rgba(255,255,255,.92) !important;
+    }
+    .form-control::placeholder, textarea::placeholder{ color: rgba(255,255,255,.55); }
+    .btn-close{ filter: invert(1); opacity: .85; }
+  </style>
+</head>
+
+<body>
+  <!-- ✅ Top sentinel: 맨 위 보이는지 감시해서 backToTop 토글 -->
+  <div id="topSentinel" style="position:absolute; top:0; left:0; width:1px; height:1px;"></div>
+
+  <!-- NAV -->
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold text-white" href="#top">TH Group</a>
+
+      <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+        <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav ms-auto gap-lg-2">
+          <li class="nav-item"><a class="nav-link" href="#about">소개</a></li>
+          <li class="nav-item"><a class="nav-link" href="#highlights">핵심</a></li>
+          <li class="nav-item"><a class="nav-link" href="#keywords">키워드</a></li>
+          <li class="nav-item"><a class="nav-link" href="#stats">지표</a></li>
+          <li class="nav-item"><a class="nav-link" href="#profile">약력</a></li>
+          <li class="nav-item"><a class="nav-link" href="#roadmap">로드맵</a></li>
+        </ul>
+
+        <div class="d-flex ms-lg-3 gap-2 mt-3 mt-lg-0">
+          <a class="btn btn-outline-light" href="https://github.com/leetaehee/laravel-app" target="_blank" rel="noopener">GitHub</a>
+          <button class="btn btn-accent" data-bs-toggle="modal" data-bs-target="#contactModal">문의하기</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header id="top" class="section-pad">
+    <div class="container">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-6">
+          <span class="kicker mb-3">Developer Growth Platform</span>
+          <h1 class="display-5 fw-black mb-3 grad-title">티에이치그룹(TH Group)</h1>
+          <p class="lead mb-4 muted">
+            성장하는 개발자가 장인정신을 지닌 리더로 나아가는 과정을 기록하고 확장하는 개발자 성장 플랫폼.
+          </p>
+
+          <div class="d-flex flex-wrap gap-2 mb-4">
+            <span class="chip">성장</span>
+            <span class="chip">기록</span>
+            <span class="chip">실험</span>
+            <span class="chip">운영</span>
+            <span class="chip">수익화</span>
+          </div>
+
+          <div class="d-flex gap-2 flex-wrap">
+            <a class="btn btn-accent btn-lg" href="#highlights">핵심 요약 보기</a>
+            <a class="btn btn-outline-light btn-lg" href="#about">프로젝트 소개</a>
+          </div>
+
+          <p class="small muted mt-4 mb-0">
+            이미지는 나중에 교체하면 완성되는 구조.
+          </p>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="img-ph lg">NO IMAGE</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about" class="section-pad anchor-offset">
+    <div class="container">
+      <div class="row g-4 align-items-center">
+        <div class="col-lg-6">
+          <span class="kicker mb-3">프로젝트 소개</span>
+          <h2 class="fw-bold mb-3">기록이 쌓이고, 운영이 경험이 되고, 경험이 자산이 된다</h2>
+          <p class="mb-3">
+            티에이치그룹(TH Group)은 개발자로 살아온 시간과 앞으로의 성장을 담아내기 위해 시작된 개발자 성장 플랫폼이다.
+            학습, 경험, 기록, 실험, 서비스 운영을 하나의 흐름으로 연결한다.
+          </p>
+          <p class="mb-0 muted">
+            PHP 레거시부터 프레임워크까지의 경험을 기반으로, 기존 기술과 새로운 기술이 공존하는 환경을 직접 만들고 운영한다.
+            작은 기록 습관에서 출발해, 하나의 서비스로 확장하며 “꾸준히 오래 가는 개발”을 목표로 한다.
+          </p>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="img-ph soft-card flat">NO IMAGE</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HIGHLIGHTS -->
+  <section id="highlights" class="section-pad anchor-offset">
+    <div class="container">
+      <div class="d-flex align-items-end justify-content-between flex-wrap gap-2 mb-4">
+        <div>
+          <span class="kicker mb-2">핵심 포인트</span>
+          <h2 class="fw-bold mb-1">한 페이지에서 성격이 바로 읽히게</h2>
+          <p class="muted mb-0">개발자 성장 플랫폼으로서의 본질만 남겼다.</p>
+        </div>
+      </div>
+
+      <div class="row g-3">
+        <div class="col-md-6 col-lg-3">
+          <div class="p-4 soft-card h-100">
+            <h5 class="fw-bold">성장 기록</h5>
+            <p class="muted mb-0">학습, 시행착오, 프로젝트 흐름을 기록하고 정리한다.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="p-4 soft-card h-100">
+            <h5 class="fw-bold">레거시 × 신기술</h5>
+            <p class="muted mb-0">오래된 기술의 현실과 최신 흐름을 함께 실험한다.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="p-4 soft-card h-100">
+            <h5 class="fw-bold">서비스 확장</h5>
+            <p class="muted mb-0">개발을 넘어 기획, 운영, 개선까지 연결한다.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="p-4 soft-card h-100">
+            <h5 class="fw-bold">운영 경험</h5>
+            <p class="muted mb-0">로그, 배포, 트래픽 등 실제 운영 감각을 쌓는다.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-3 mt-1">
+        <div class="col-md-6 col-lg-6">
+          <div class="p-4 soft-card h-100">
+            <h5 class="fw-bold">정보 정리 플랫폼</h5>
+            <p class="muted mb-0">개발 지식, 문서, 여행 기록까지 한곳에 모아 관리한다.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-6">
+          <div class="p-4 soft-card h-100">
+            <h5 class="fw-bold">성장과 수익의 연결</h5>
+            <p class="muted mb-0">광고/콘텐츠/트래픽을 통해 지속 가능한 프로젝트를 만든다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MID CTA -->
+  <section class="py-5">
+    <div class="container">
+      <div class="soft-card p-4 p-lg-5">
+        <div class="row align-items-center g-3">
+          <div class="col-lg-8">
+            <span class="kicker mb-2">슬로건</span>
+            <h3 class="fw-bold mb-2">“성장하는 개발자에서 장인정신을 지닌 리더로”</h3>
+            <p class="mb-0 muted">
+              빠르게 끝내는 개발보다, 오래 남는 구조를 만든다. 기록과 운영을 통해 스스로를 업그레이드한다.
+            </p>
+          </div>
+
+          <!-- ✅ 모바일 정렬 완전 안정화 -->
+          <div class="col-lg-4">
+            <div class="d-grid gap-2 d-lg-flex justify-content-lg-end">
+              <a class="btn btn-outline-light btn-lg" href="#roadmap">로드맵 보기</a>
+              <button class="btn btn-accent btn-lg" data-bs-toggle="modal" data-bs-target="#contactModal">
+                문의하기
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KEYWORDS -->
+  <section id="keywords" class="section-pad anchor-offset">
+    <div class="container">
+      <span class="kicker mb-2">키워드</span>
+      <h2 class="fw-bold mb-3">스택보다 방향성이 먼저 보이게</h2>
+      <p class="muted mb-4">개발자 성장 플랫폼의 핵심 키워드.</p>
+
+      <div class="d-flex flex-wrap gap-2">
+        <span class="chip">성장</span>
+        <span class="chip">기록</span>
+        <span class="chip">개발자</span>
+        <span class="chip">실험</span>
+        <span class="chip">웹서비스</span>
+        <span class="chip">지속성</span>
+        <span class="chip">운영</span>
+        <span class="chip">경험</span>
+        <span class="chip">수익화</span>
+        <span class="chip">브랜드</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section class="section-pad">
+    <div class="container">
+      <div class="row g-4 align-items-center">
+        <div class="col-lg-6">
+          <div class="img-ph sm">NO IMAGE</div>
+        </div>
+        <div class="col-lg-6">
+          <span class="kicker mb-2">Why</span>
+          <h2 class="fw-bold mb-3">업무 밖에서 만드는 “내 기준의 개발”</h2>
+          <p class="mb-3">
+            시스템은 시간이 지나면 낡고, 실무는 늘 일정과 사람 사이에서 타협이 생긴다.
+            그래서 일상에서 연구하고 정리하는 습관을 서비스로 확장했다.
+          </p>
+          <p class="mb-0 muted">
+            AI를 도구로 쓰되, 설계와 판단은 사람이 한다는 원칙을 지킨다.
+            진정성 있는 기록과 꾸준한 개선이 가장 강력한 경쟁력이 된다.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section id="stats" class="section-pad anchor-offset">
+    <div class="container">
+      <span class="kicker mb-2">지표</span>
+      <h2 class="fw-bold mb-3">운영을 목표로 하는 프로젝트</h2>
+      <p class="muted mb-4">실제 운영 경험을 쌓기 위해 지표를 만들고 개선한다.</p>
+
+      <div class="row g-3">
+        <div class="col-md-4">
+          <div class="stat h-100">
+            <div class="num">NO DATA</div>
+            <div class="label">월 방문자(예정)</div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="stat h-100">
+            <div class="num">NO DATA</div>
+            <div class="label">콘텐츠 수(예정)</div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="stat h-100">
+            <div class="num">NO DATA</div>
+            <div class="label">운영 로그/지표(예정)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-4 soft-card p-4">
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+          <div>
+            <div class="fw-bold">“감”이 아니라 “데이터”로 개선한다</div>
+            <div class="muted">유입·행동·성능·운영 로그를 기반으로 개선 포인트를 찾는다.</div>
+          </div>
+          <a class="btn btn-outline-light" href="https://github.com/leetaehee/laravel-app" target="_blank" rel="noopener">Repository 보기</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROFILE -->
+  <section id="profile" class="section-pad anchor-offset">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-6">
+          <span class="kicker mb-2">Profile</span>
+          <h2 class="fw-bold mb-3">개발자 약력</h2>
+
+          <div class="soft-card p-4">
+            <ul class="mb-0 muted">
+              <li>MES 및 ERP 시스템 개발 경험</li>
+              <li>에너지관리시스템 xEMS 개발(BEMS/FEMS/REMS/HEMS)</li>
+              <li>웹서비스 기획·설계·디자인·개발 전반 수행</li>
+              <li>PHP 레거시부터 CodeIgniter, Laravel까지 경험</li>
+              <li>Python, Java, Spring Boot 등 다양한 백엔드 기술 학습·활용</li>
+              <li>AWS 및 네이버 클라우드 기반 서버 운영 경험</li>
+              <li>리눅스 서버 직접 설치/구성(Nginx, PHP-FPM, MySQL 등)</li>
+              <li>로컬 서버 및 개발 환경 구축 경험</li>
+              <li>로그/보안/배포/트래픽 등 운영 전반 경험</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <span class="kicker mb-2">Stack</span>
+          <h2 class="fw-bold mb-3">대표 기술</h2>
+
+          <div class="row g-3">
+            <div class="col-6">
+              <div class="soft-card p-3 h-100">
+                <div class="fw-bold">Backend</div>
+                <div class="muted">PHP, Laravel</div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="soft-card p-3 h-100">
+                <div class="fw-bold">Database</div>
+                <div class="muted">MySQL</div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="soft-card p-3 h-100">
+                <div class="fw-bold">Frontend</div>
+                <div class="muted">Bootstrap 5, jQuery</div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="soft-card p-3 h-100">
+                <div class="fw-bold">Infra</div>
+                <div class="muted">Ubuntu, Nginx, Cloud(AWS/NCP)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 soft-card p-4">
+            <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+              <div>
+                <div class="fw-bold">GitHub</div>
+                <div class="muted">소스는 GitHub에서 확인 가능.</div>
+              </div>
+              <a class="btn btn-accent" href="https://github.com/leetaehee/laravel-app" target="_blank" rel="noopener">Repository 열기</a>
+            </div>
+          </div>
+
+          <div class="mt-3 img-ph sm">NO IMAGE</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROADMAP -->
+  <section id="roadmap" class="section-pad anchor-offset">
+    <div class="container">
+      <span class="kicker mb-2">Roadmap</span>
+      <h2 class="fw-bold mb-3">지금-다음-그다음</h2>
+      <p class="muted mb-4">확장 가능한 방식으로, 천천히 단단하게.</p>
+
+      <div class="row g-3">
+        <div class="col-lg-4">
+          <div class="soft-card p-4 h-100">
+            <div class="fw-bold mb-2">Now</div>
+            <ul class="mb-0 muted">
+              <li>메인 소개/콘텐츠 구조 정리</li>
+              <li>기록/게시/기본 운영 기능 안정화</li>
+              <li>로그 기반 운영 품질 개선</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="soft-card p-4 h-100">
+            <div class="fw-bold mb-2">Next</div>
+            <ul class="mb-0 muted">
+              <li>유입/행동 지표 대시보드</li>
+              <li>큐/메일/알림 등 운영 자동화</li>
+              <li>콘텐츠 카테고리화(여행/개발/문서)</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="soft-card p-4 h-100">
+            <div class="fw-bold mb-2">Later</div>
+            <ul class="mb-0 muted">
+              <li>PWA 설치형 웹앱 실험</li>
+              <li>수익화(광고/콘텐츠) 최적화</li>
+              <li>운영 경험을 제품화(서비스화)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-4 soft-card p-4">
+        <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+          <div>
+            <div class="fw-bold">함께 이야기해보기</div>
+            <div class="muted">콜라보/피드백/제안이 있으면 편하게.</div>
+          </div>
+          <button class="btn btn-accent" data-bs-toggle="modal" data-bs-target="#contactModal">문의하기</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-5">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <div class="fw-bold">TH Group</div>
+        <div class="small muted">© <span id="year"></span> TH Group. All rights reserved.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back To Top (우측 하단 / iOS safe-area 대응: env + constant 동시) -->
+  <button id="backToTop"
+          class="position-fixed d-flex align-items-center justify-content-center"
+          style="bottom: calc(18px + env(safe-area-inset-bottom)); bottom: calc(18px + constant(safe-area-inset-bottom)); right: 16px;"
+          aria-label="맨 위로">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M6 14l6-6 6 6" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+  <!-- CONTACT MODAL -->
+  <div class="modal fade" id="contactModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header border-0">
+          <h5 class="modal-title fw-bold">문의하기</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="닫기"></button>
+        </div>
+
+        <div class="modal-body">
+          <p class="muted small mb-3">
+            지금은 UI만 연결해둔 상태. 라라벨 라우팅/메일/DB 저장으로 붙이면 바로 실사용 가능.
+          </p>
+
+          <div class="mb-3">
+            <label class="form-label">이름</label>
+            <input class="form-control" placeholder="홍길동" />
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">연락처 또는 이메일</label>
+            <input class="form-control" placeholder="010-0000-0000 / email@example.com" />
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">문의 내용</label>
+            <textarea class="form-control" rows="4" placeholder="내용을 입력해 주세요."></textarea>
+          </div>
+
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="agree">
+            <label class="form-check-label small muted" for="agree">
+              개인정보 수집 및 이용에 동의합니다.
+            </label>
+          </div>
+        </div>
+
+        <div class="modal-footer border-0">
+          <button class="btn btn-outline-light" data-bs-dismiss="modal">닫기</button>
+          <button class="btn btn-accent" type="button">문의 제출(연결 예정)</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS (bundle) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // 연도
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ---------------------------
+    // 1) 앵커 클릭 스크롤 (살짝 천천히, 너무 뻑뻑하진 않게)
+    // ---------------------------
+    function smoothScrollTo(targetY, durationMs = 800) {
+      const startY = window.scrollY;
+      const diff = targetY - startY;
+      const start = performance.now();
+
+      function ease(t){
+        return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3)/2;
+      }
+
+      function step(now){
+        const p = Math.min(1, (now - start) / durationMs);
+        window.scrollTo(0, startY + diff * ease(p));
+        if (p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    document.querySelectorAll('a.nav-link[href^="#"], a.btn[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const id = a.getAttribute('href');
+        if (!id || id.length < 2) return;
+        const el = document.querySelector(id);
+        if (!el) return;
+        e.preventDefault();
+        const y = el.getBoundingClientRect().top + window.scrollY - 86;
+        smoothScrollTo(y, 820);
+      });
+    });
+
+    // ---------------------------
+    // 2) Wheel smooth (덜 뻑뻑한 버전)
+    //    - 필요 없으면 이 블록 통째로 삭제하면 기본 스크롤
+    // ---------------------------
+    (function enableWheelSmooth(){
+      let current = window.scrollY;
+      let target = window.scrollY;
+      let ticking = false;
+
+      const strength = 0.10;  // 부드럽게(덜 답답)
+      const maxStep = 220;    // 한 번에 더 이동
+
+      function animate(){
+        ticking = true;
+        current += (target - current) * strength;
+        window.scrollTo(0, current);
+
+        if (Math.abs(target - current) < 0.6) {
+          ticking = false;
+          return;
+        }
+        requestAnimationFrame(animate);
+      }
+
+      window.addEventListener('wheel', (e) => {
+        // 모달 열려있으면 방해 금지
+        const inModal = document.querySelector('.modal.show');
+        if (inModal) return;
+
+        e.preventDefault();
+        const delta = Math.max(-maxStep, Math.min(maxStep, e.deltaY));
+        target = Math.max(0, target + delta);
+
+        if (!ticking) {
+          current = window.scrollY;
+          requestAnimationFrame(animate);
+        }
+      }, { passive: false });
+
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          current = window.scrollY;
+          target = window.scrollY;
+        }
+      }, { passive: true });
+    })();
+
+    // ---------------------------
+    // 3) Back to top (모바일에서도 100% 표시: IntersectionObserver 방식)
+    // ---------------------------
+    const backToTopBtn = document.getElementById('backToTop');
+    const sentinel = document.getElementById('topSentinel');
+
+    if ('IntersectionObserver' in window && sentinel) {
+      const io = new IntersectionObserver((entries) => {
+        const isTopVisible = entries[0].isIntersecting;
+        backToTopBtn.style.display = isTopVisible ? 'none' : 'flex';
+      }, { threshold: 0 });
+
+      io.observe(sentinel);
+    } else {
+      // fallback
+      function toggleBackToTop(){
+        const y = window.pageYOffset || document.documentElement.scrollTop || 0;
+        backToTopBtn.style.display = (y > 200) ? 'flex' : 'none';
+      }
+      window.addEventListener('scroll', toggleBackToTop, { passive: true });
+      window.addEventListener('resize', toggleBackToTop, { passive: true });
+      toggleBackToTop();
+    }
+
+    backToTopBtn.addEventListener('click', () => {
+      smoothScrollTo(0, 780);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,951 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TH-Study | Brand</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap Icons (MIT) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <!-- Devicon (MIT) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+
+  <!-- Pretendard -->
+  <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@latest/dist/web/static/pretendard.css" />
+
+  <style>
+    :root{
+      --bg:#f7f8fb;
+      --ink:#111827;
+      --muted:#6b7280;
+      --brand:#2563eb;
+      --brand2:#22c55e;
+      --card:rgba(255,255,255,.92);
+      --border:rgba(17,24,39,.10);
+      --shadow:0 18px 60px rgba(17,24,39,.12);
+      --r18:18px;
+      --r22:22px;
+      --maxw:1100px;
+    }
+    html{ scroll-behavior:smooth; }
+    body.brand-page{
+      font-family:Pretendard, system-ui, -apple-system, Segoe UI, Roboto, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+      background:var(--bg);
+      color:var(--ink);
+    }
+
+    /* Header */
+    .brand-navbar{
+      backdrop-filter: blur(10px);
+      background: rgba(255,255,255,.86);
+      border-bottom: 1px solid rgba(17,24,39,.08);
+    }
+    .brand-logo{ font-size:1.1rem; color:var(--ink); letter-spacing:-0.02em; font-weight: 950; }
+    .brand-navbar .nav-link{ color:#2b2f36; font-weight:800; opacity:.82; }
+    .brand-navbar .nav-link:hover{ opacity:1; }
+    .brand-navbar .btn{ border-radius:999px; font-weight:900; }
+
+    /* Hero */
+    .brand-hero{
+      position:relative;
+      overflow:hidden;
+      background:
+        radial-gradient(1200px 600px at 20% 10%, #eaf2ff 0%, rgba(234,242,255,0) 60%),
+        radial-gradient(900px 500px at 80% 0%, #eefbf7 0%, rgba(238,251,247,0) 55%),
+        linear-gradient(180deg, #ffffff 0%, #f7f8fb 100%);
+      border-bottom:1px solid rgba(17,24,39,.06);
+    }
+    .brand-hero::before{
+      content:"";
+      position:absolute; inset:0;
+      background-image: radial-gradient(circle at 10px 10px, rgba(17,24,39,.06) 2px, transparent 2px);
+      background-size: 28px 28px;
+      opacity:.30;
+      pointer-events:none;
+    }
+    .hero-wrap{
+      position:relative; z-index:1;
+      max-width:var(--maxw);
+      margin:0 auto;
+      padding: 64px 16px 46px;
+    }
+    .brand-badge{
+      display:inline-flex; align-items:center; gap:.55rem;
+      padding:.5rem .85rem;
+      border-radius:999px;
+      background: rgba(17,24,39,.06);
+      color:var(--ink);
+      font-weight:950;
+      font-size:.95rem;
+    }
+    .brand-badge i{ color:var(--brand); }
+    .brand-title{
+      font-weight:1050;
+      letter-spacing:-0.06em;
+      line-height:1.04;
+      margin-top:14px;
+      font-size: clamp(2.25rem, 4.6vw, 3.5rem);
+    }
+    .brand-sub{
+      margin-top:14px;
+      color: var(--muted);
+      font-size:1.12rem;
+      line-height:1.68;
+      max-width: 56rem;
+    }
+    .hero-cta{
+      margin-top:22px;
+      display:flex; gap:10px; flex-wrap:wrap;
+    }
+    .hero-cta .btn{
+      border-radius:14px;
+      padding: 12px 16px;
+      font-weight: 1000;
+    }
+    .btn-primary{
+      background: var(--brand);
+      border-color: var(--brand);
+      box-shadow: 0 14px 34px rgba(37,99,235,.25);
+    }
+    .btn-outline-secondary{ border-color: rgba(17,24,39,.18); }
+
+    .hero-note{
+      margin-top:18px;
+      display:flex; gap:10px; flex-wrap:wrap;
+      color: rgba(17,24,39,.70);
+      font-size:.95rem;
+    }
+    .hero-note .pill{
+      background: rgba(255,255,255,.78);
+      border: 1px solid rgba(17,24,39,.08);
+      border-radius:999px;
+      padding:.42rem .72rem;
+      box-shadow: 0 10px 26px rgba(17,24,39,.07);
+      font-weight: 900;
+    }
+
+    /* Section Nav */
+    .section-nav{
+      position:sticky;
+      top:0;
+      z-index:9;
+      background: rgba(247,248,251,.78);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(17,24,39,.06);
+    }
+    .section-nav .nav-inner{
+      max-width:var(--maxw);
+      margin:0 auto;
+      padding:10px 16px;
+      display:flex; gap:10px;
+      overflow-x:auto;
+      scrollbar-width:none;
+    }
+    .section-nav .nav-inner::-webkit-scrollbar{ display:none; }
+    .sec-link{
+      display:inline-flex;
+      align-items:center;
+      gap:.45rem;
+      padding:.58rem .95rem;
+      border-radius:999px;
+      border:1px solid rgba(17,24,39,.12);
+      background: rgba(255,255,255,.78);
+      color: var(--ink);
+      font-weight:1000;
+      letter-spacing:.02em;
+      white-space:nowrap;
+      text-decoration:none;
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+    }
+    .sec-link:hover{ transform: translateY(-1px); }
+    .sec-link.active{
+      background: var(--ink);
+      color:#fff;
+      border-color: var(--ink);
+    }
+
+    /* Main */
+    .brand-main{
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 26px 16px 90px;
+    }
+    section.brand-section{ padding: 34px 0; }
+    .section-head{ margin-bottom: 14px; }
+    .section-kicker{
+      display:inline-flex; align-items:center; gap:.45rem;
+      color: rgba(17,24,39,.72);
+      font-weight: 1000;
+      font-size:.95rem;
+    }
+    .section-kicker i{ color: var(--brand); }
+    .section-title{
+      margin-top:10px;
+      font-size: clamp(1.45rem, 2.2vw, 2rem);
+      letter-spacing:-0.03em;
+      font-weight:1050;
+      line-height:1.18;
+    }
+    .section-desc{
+      margin-top:10px;
+      color: var(--muted);
+      font-size:1.05rem;
+      line-height:1.72;
+      max-width: 60rem;
+    }
+
+    /* Cards */
+    .cardx{
+      height:100%;
+      background:#fff;
+      border:1px solid rgba(17,24,39,.08);
+      border-radius: var(--r18);
+      padding:1.1rem;
+      box-shadow: 0 12px 40px rgba(17,24,39,.06);
+    }
+    .cardx .icon{
+      width:46px; height:46px;
+      border-radius:14px;
+      display:grid; place-items:center;
+      background: rgba(17,24,39,.06);
+      margin-bottom:.7rem;
+      font-size:1.25rem;
+      color: var(--ink);
+    }
+    .cardx .title{ font-weight:1000; margin-bottom:.2rem; }
+    .cardx .text{ color: var(--muted); font-size:.98rem; line-height:1.65; }
+
+    .lift{ transition: transform .18s ease, box-shadow .18s ease; }
+    .lift:hover{ transform: translateY(-2px); box-shadow: 0 22px 60px rgba(17,24,39,.12); }
+
+    /* Quote */
+    .quote{
+      border:1px solid rgba(17,24,39,.10);
+      border-left:6px solid var(--ink);
+      background: rgba(255,255,255,.88);
+      border-radius:16px;
+      padding:1rem 1.05rem;
+      box-shadow: 0 12px 40px rgba(17,24,39,.06);
+    }
+
+    /* Feature panel */
+    .panel{
+      background: rgba(255,255,255,.90);
+      border:1px solid rgba(17,24,39,.10);
+      border-radius: var(--r22);
+      box-shadow: var(--shadow);
+      padding: 1.25rem 1.25rem;
+    }
+    .panel p{
+      margin:0 0 .75rem;
+      color: rgba(17,24,39,.78);
+      line-height:1.78;
+      font-size:1.03rem;
+    }
+    .panel p:last-child{ margin-bottom:0; }
+    .panel .callout{
+      margin-top: 12px;
+      padding: .9rem 1rem;
+      border-radius: 16px;
+      background: rgba(37,99,235,.07);
+      border: 1px solid rgba(37,99,235,.18);
+      color: rgba(17,24,39,.78);
+      font-weight: 950;
+    }
+
+    /* Metrics */
+    .metric{
+      background: rgba(255,255,255,.92);
+      border: 1px solid rgba(17,24,39,.10);
+      border-radius: 18px;
+      padding: 1rem 1.1rem;
+      box-shadow: 0 12px 40px rgba(17,24,39,.06);
+      height: 100%;
+    }
+    .metric .n{
+      font-size: 1.6rem;
+      font-weight: 1100;
+      letter-spacing: -0.03em;
+    }
+    .metric .l{
+      color: var(--muted);
+      margin-top: 4px;
+      line-height: 1.55;
+    }
+
+    /* Grid shots (no personal content) */
+    .studio-grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 12px;
+    }
+    .shot{
+      background: rgba(255,255,255,.9);
+      border:1px solid rgba(17,24,39,.10);
+      border-radius: 18px;
+      box-shadow: 0 12px 40px rgba(17,24,39,.06);
+      overflow:hidden;
+      position:relative;
+      min-height: 140px;
+    }
+    .shot::before{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(320px 160px at 20% 20%, rgba(37,99,235,.18), transparent 55%),
+        radial-gradient(320px 180px at 80% 20%, rgba(34,197,94,.16), transparent 60%),
+        linear-gradient(135deg, rgba(17,24,39,.06), rgba(255,255,255,0));
+    }
+    .shot .cap{
+      position:absolute; left:14px; bottom:12px; right:14px;
+      color: rgba(17,24,39,.82);
+      font-weight: 1000;
+      letter-spacing: -0.02em;
+    }
+    .shot .cap small{
+      display:block;
+      margin-top: 4px;
+      font-weight: 900;
+      color: rgba(17,24,39,.62);
+    }
+    .colspan-6{ grid-column: span 6; }
+    .colspan-4{ grid-column: span 4; }
+    .colspan-8{ grid-column: span 8; }
+    @media (max-width: 768px){
+      .colspan-6, .colspan-4, .colspan-8{ grid-column: span 12; }
+    }
+
+    /* Skills */
+    .skillbox{
+      background:#fff;
+      border:1px solid rgba(17,24,39,.08);
+      border-radius: 18px;
+      padding: 1.05rem;
+      box-shadow: 0 12px 40px rgba(17,24,39,.06);
+      height: 100%;
+    }
+    .skillbox .head{
+      font-weight: 1050;
+      margin-bottom: .65rem;
+      display:flex; align-items:center; gap:.5rem;
+    }
+    .skillicons{
+      display:flex; flex-wrap:wrap;
+      gap: .55rem .75rem;
+    }
+    .skillicons span{
+      display:inline-flex; align-items:center; gap:.5rem;
+      padding: .32rem .52rem;
+      border-radius: 12px;
+      background: rgba(17,24,39,.04);
+      border: 1px solid rgba(17,24,39,.06);
+      font-size: .92rem;
+      color: var(--ink);
+      font-weight: 850;
+    }
+    .skillicons i{ font-size: 1.2rem; }
+
+    /* CTA */
+    .cta{
+      background: linear-gradient(135deg, rgba(17,24,39,.95), rgba(17,24,39,.85));
+      border-radius: 22px;
+      padding: 1.35rem 1.35rem;
+      color:#fff;
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: 0 22px 70px rgba(17,24,39,.20);
+      display:flex;
+      flex-direction:column;
+      gap:1rem;
+    }
+    @media (min-width: 768px){
+      .cta{ flex-direction:row; justify-content:space-between; align-items:center; }
+    }
+    .cta .t1{ font-size:1.35rem; font-weight:1100; letter-spacing:-0.02em; }
+    .cta .t2{ color: rgba(255,255,255,.78); }
+
+    /* Footer */
+    footer{
+      border-top:1px solid rgba(17,24,39,.08);
+      background: rgba(255,255,255,.85);
+      backdrop-filter: blur(10px);
+    }
+
+    /* Right progress dots */
+    .progress-dots{
+      position:fixed;
+      right:18px;
+      top:50%;
+      transform: translateY(-50%);
+      z-index: 20;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .progress-dots a{
+      width:10px; height:10px;
+      border-radius:999px;
+      border:2px solid rgba(17,24,39,.28);
+      background: rgba(255,255,255,.35);
+      display:block;
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+    }
+    .progress-dots a:hover{ transform: scale(1.15); }
+    .progress-dots a.active{
+      background: var(--brand);
+      border-color: var(--brand);
+      box-shadow: 0 0 0 5px rgba(37,99,235,.20);
+    }
+    @media (max-width: 420px){
+      .progress-dots{ right: 10px; gap: 9px; }
+    }
+
+    /* Reveal + typing */
+    [data-reveal]{
+      opacity:0;
+      transform: translateY(14px);
+      transition: opacity .7s ease, transform .7s ease;
+      will-change: opacity, transform;
+      transition-delay: var(--delay, 0ms);
+    }
+    [data-reveal].is-in{ opacity:1; transform: translateY(0); }
+    [data-reveal][data-reveal-style="card"]{ transform: translateY(18px) scale(.985); }
+    [data-reveal][data-reveal-style="card"].is-in{ transform: translateY(0) scale(1); }
+
+    .typing{
+      display:inline-block;
+      white-space: pre-wrap;
+      border-right: 2px solid rgba(17,24,39,.55);
+      animation: caretBlink .9s step-end infinite;
+    }
+    .typing.is-done{
+      border-right-color: transparent;
+      animation:none;
+    }
+    @keyframes caretBlink{ 50%{ border-right-color: transparent; } }
+
+    @media (prefers-reduced-motion: reduce){
+      html{ scroll-behavior:auto; }
+      [data-reveal]{ opacity:1 !important; transform:none !important; transition:none !important; }
+      .typing{ border-right-color: transparent !important; animation:none !important; }
+    }
+  </style>
+</head>
+
+<body class="brand-page">
+
+  <!-- Header -->
+  <header class="brand-navbar sticky-top">
+    <div class="container" style="max-width: var(--maxw);">
+      <div class="py-3 d-flex align-items-center justify-content-between gap-3">
+        <a class="brand-logo text-decoration-none" href="/">
+          TH-Study
+        </a>
+
+        <nav class="d-none d-lg-flex align-items-center gap-4">
+          <a class="nav-link" href="/guides">가이드</a>
+          <a class="nav-link" href="/posts">콘텐츠</a>
+          <a class="nav-link" href="/roadmap">로드맵</a>
+          <a class="nav-link" href="/search">검색</a>
+        </nav>
+
+        <div class="d-flex align-items-center gap-2">
+          <a class="btn btn-sm btn-outline-secondary d-none d-md-inline-flex align-items-center gap-2" href="/search">
+            <i class="bi bi-search"></i> 검색
+          </a>
+          <a class="btn btn-sm btn-primary d-none d-md-inline-flex align-items-center gap-2" href="/guides/server-setup">
+            <i class="bi bi-rocket-takeoff"></i> 시작하기
+          </a>
+          <button class="btn btn-sm btn-outline-secondary d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileNav">
+            <i class="bi bi-list"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Offcanvas -->
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="mobileNav">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title">TH-Study</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div class="d-grid gap-2">
+        <a class="btn btn-outline-secondary" href="/guides">가이드</a>
+        <a class="btn btn-outline-secondary" href="/posts">콘텐츠</a>
+        <a class="btn btn-outline-secondary" href="/roadmap">로드맵</a>
+        <a class="btn btn-outline-secondary" href="/search">검색</a>
+        <a class="btn btn-primary" href="/guides/server-setup">서버 개설부터 시작</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right progress dots -->
+  <div class="progress-dots" aria-label="page progress">
+    <a href="#why" class="dotlink" data-target="why" title="WHY"></a>
+    <a href="#only" class="dotlink" data-target="only" title="ONLY"></a>
+    <a href="#framework" class="dotlink" data-target="framework" title="FRAMEWORK"></a>
+    <a href="#library" class="dotlink" data-target="library" title="LIBRARY"></a>
+    <a href="#mission" class="dotlink" data-target="mission" title="MISSION"></a>
+    <a href="#skills" class="dotlink" data-target="skills" title="SKILLS"></a>
+    <a href="#start" class="dotlink" data-target="start" title="START"></a>
+  </div>
+
+  <!-- Hero -->
+  <section class="brand-hero" id="top">
+    <div class="hero-wrap">
+      <div class="brand-badge" data-reveal style="--delay:0ms">
+        <i class="bi bi-lightning-charge"></i> 정보 공유 · 실전 문서화 · 운영 중심 가이드
+      </div>
+
+      <div class="brand-title" style="margin-bottom:6px;">
+        <span data-typing="나를 뛰어넘는 개발자" data-typing-speed="55" data-typing-delay="160"></span>
+      </div>
+
+      <div class="brand-sub" data-reveal style="--delay:120ms">
+        TH-Study는 개발 지식을 “모아두는 곳”이 아니라,
+        <b>처음부터 끝까지 이어지는 흐름</b>으로 정리해 공유하는 아카이브다.<br class="d-none d-md-block">
+        서버 개설 → 배포 → 운영 → 자동화 → 장애 대응까지, 실제로 따라하면 서비스가 켜지게 만든다.
+      </div>
+
+      <div class="hero-cta" data-reveal style="--delay:200ms">
+        <a class="btn btn-primary" href="/guides/server-setup">
+          서버 개설부터 시작 <i class="bi bi-arrow-right-short"></i>
+        </a>
+        <a class="btn btn-outline-secondary" href="/roadmap">
+          로드맵 보기 <i class="bi bi-compass"></i>
+        </a>
+      </div>
+
+      <div class="hero-note" data-reveal style="--delay:260ms">
+        <span class="pill"><i class="bi bi-diagram-3 text-primary"></i> 흐름</span>
+        <span class="pill"><i class="bi bi-journal-text text-success"></i> 문서화</span>
+        <span class="pill"><i class="bi bi-shield-check text-primary"></i> 운영</span>
+        <span class="pill"><i class="bi bi-robot text-primary"></i> AI</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section nav -->
+  <div class="section-nav">
+    <div class="nav-inner">
+      <a class="sec-link" href="#why" data-link="why">WHY</a>
+      <a class="sec-link" href="#only" data-link="only">ONLY</a>
+      <a class="sec-link" href="#framework" data-link="framework">FRAMEWORK</a>
+      <a class="sec-link" href="#library" data-link="library">LIBRARY</a>
+      <a class="sec-link" href="#mission" data-link="mission">MISSION</a>
+      <a class="sec-link" href="#skills" data-link="skills">SKILLS</a>
+      <a class="sec-link" href="#start" data-link="start">START</a>
+    </div>
+  </div>
+
+  <main class="brand-main">
+
+    <!-- WHY -->
+    <section class="brand-section" id="why">
+      <div class="section-head">
+        <div class="section-kicker" data-reveal><i class="bi bi-compass"></i> WHY</div>
+        <div class="section-title" data-reveal style="--delay:80ms">
+          문제는 넘치는데, “처음부터 끝까지 이어진 문서”는 부족하다
+        </div>
+        <div class="section-desc" data-reveal style="--delay:140ms">
+          검색하면 조각은 많은데, 실무에서 필요한 건 “조각”이 아니라 “전체 흐름”이다.
+          TH-Study는 처음 보는 사람도 따라가며 서비스가 켜지도록 정리한다.
+        </div>
+      </div>
+
+      <div class="row g-3 mt-1">
+        <div class="col-md-4" data-reveal data-reveal-style="card" style="--delay:0ms">
+          <div class="cardx lift">
+            <div class="icon"><i class="bi bi-puzzle"></i></div>
+            <div class="title">정보가 조각나 있음</div>
+            <div class="text">설정/배포/운영이 따로 놀아서, 중간에 막히기 쉬움.</div>
+          </div>
+        </div>
+        <div class="col-md-4" data-reveal data-reveal-style="card" style="--delay:120ms">
+          <div class="cardx lift">
+            <div class="icon"><i class="bi bi-signpost-2"></i></div>
+            <div class="title">순서가 빠져 있음</div>
+            <div class="text">“다음에 뭘 해야 하는지”가 안 보이면 결국 포기하게 됨.</div>
+          </div>
+        </div>
+        <div class="col-md-4" data-reveal data-reveal-style="card" style="--delay:240ms">
+          <div class="cardx lift">
+            <div class="icon"><i class="bi bi-shield-check text-success"></i></div>
+            <div class="title">운영 관점이 부족함</div>
+            <div class="text">로그/백업/크론/장애 대응이 빠지면 실서비스는 버티기 힘듦.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="quote mt-4" data-reveal style="--delay:120ms">
+        <div class="fw-bold">목표: “따라하면 실제로 켜지는 문서”를 만든다.</div>
+        <div class="text-muted mt-1">정답 암기가 아니라, 재현 가능한 운영 흐름.</div>
+      </div>
+    </section>
+
+    <!-- ONLY -->
+    <section class="brand-section" id="only">
+      <div class="section-head">
+        <div class="section-kicker" data-reveal><i class="bi bi-stars"></i> ONLY</div>
+        <div class="section-title" data-reveal style="--delay:80ms">
+          TH-Study는 “쉽게” 만들되, “구조”는 지킨다
+        </div>
+        <div class="section-desc" data-reveal style="--delay:140ms">
+          초보가 따라갈 수 있게 단순화하되, 실무에서 무너지지 않게 구조를 남긴다.
+          그리고 운영까지 포함해서 끝까지 가게 만든다.
+        </div>
+      </div>
+
+      <div class="row g-3 mt-1">
+        <div class="col-md-6 col-lg-3" data-reveal data-reveal-style="card" style="--delay:0ms">
+          <div class="cardx lift">
+            <div class="icon"><i class="bi bi-backpack"></i></div>
+            <div class="title">초보 기준 문서</div>
+            <div class="text">개념 1줄 + 예제 1개 + 실수 1개 + 체크리스트.</div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3" data-reveal data-reveal-style="card" style="--delay:120ms">
+          <div class="cardx lift">
+            <div class="icon"><i class="bi bi-tools"></i></div>
+            <div class="title">운영 포함</div>
+            <div class="text">배포/로그/백업/크론/큐/모니터링까지 한 세트.</div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3" data-reveal data-reveal-style="card" style="--delay:240ms">
+          <div class="cardx lift">
+            <div class="icon"><i class="bi bi-diagram-3"></i></div>
+            <div class="title">재사용 가능한 템플릿</div>
+            <div class="text">프로젝트마다 다시 안 삽질하게 템플릿화.</div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3" data-reveal data-reveal-style="card" style="--delay:360ms">
+          <div class="cardx lift">
+            <div class="icon"><i class="bi bi-robot"></i></div>
+            <div class="title">AI 활용 루틴</div>
+            <div class="text">속도는 올리고 구조는 지키는 질문/정리 방식.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FRAMEWORK -->
+    <section class="brand-section" id="framework">
+      <div class="section-head">
+        <div class="section-kicker" data-reveal><i class="bi bi-layers"></i> FRAMEWORK</div>
+        <div class="section-title" data-reveal style="--delay:80ms">
+          “실제로 되는 순서”로 안내한다
+        </div>
+        <div class="section-desc" data-reveal style="--delay:140ms">
+          문서가 많아도, 순서가 없으면 안 된다. TH-Study는 처음부터 끝까지 흐름으로 이어준다.
+        </div>
+      </div>
+
+      <div class="panel mt-3" data-reveal data-reveal-style="card" style="--delay:120ms">
+        <p><b>01. 서버 개설 → 도메인 → SSL</b> (서비스 켜기)</p>
+        <p><b>02. 배포 → 환경변수 → 스토리지</b> (서비스 안정화)</p>
+        <p><b>03. 로그/백업/크론/큐</b> (운영 기본기)</p>
+        <p><b>04. 장애 대응/모니터링</b> (실서비스 생존)</p>
+        <p><b>05. AI 활용</b> (속도/품질 균형)</p>
+        <div class="callout">
+          “기술 나열”이 아니라 “운영 흐름”으로 정리한다.
+        </div>
+      </div>
+    </section>
+
+    <!-- LIBRARY (콘텐츠 카테고리) -->
+    <section class="brand-section" id="library">
+      <div class="section-head">
+        <div class="section-kicker" data-reveal><i class="bi bi-journal-text"></i> LIBRARY</div>
+        <div class="section-title" data-reveal style="--delay:80ms">
+          지식을 “구조화”해서 공유한다
+        </div>
+        <div class="section-desc" data-reveal style="--delay:140ms">
+          단발성 글이 아니라, 서로 연결되는 문서/가이드/체크리스트로 구성된다.
+        </div>
+      </div>
+
+      <div class="studio-grid mt-3" data-reveal data-reveal-style="card" style="--delay:120ms">
+        <div class="shot colspan-8">
+          <div class="cap">가이드 모음
+            <small>서버 · 배포 · 운영 · 트러블슈팅을 “한 흐름”으로 정리</small>
+          </div>
+        </div>
+        <div class="shot colspan-4">
+          <div class="cap">체크리스트
+            <small>실수 방지용 필수 점검 리스트</small>
+          </div>
+        </div>
+        <div class="shot colspan-6">
+          <div class="cap">템플릿
+            <small>.env · Nginx · Supervisor · Cron · 배포 스크립트 템플릿</small>
+          </div>
+        </div>
+        <div class="shot colspan-6">
+          <div class="cap">레퍼런스
+            <small>개념/용어/패턴을 빠르게 확인할 수 있는 정리본</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MISSION -->
+    <section class="brand-section" id="mission">
+      <div class="section-head">
+        <div class="section-kicker" data-reveal><i class="bi bi-flag"></i> MISSION</div>
+        <div class="section-title" data-reveal style="--delay:80ms">
+          정보의 비대칭을 줄이고, 누구나 끝까지 갈 수 있게
+        </div>
+        <div class="section-desc" data-reveal style="--delay:140ms">
+          초보가 검색 지옥에서 헤매지 않도록, 운영까지 포함한 문서를 공유한다.
+        </div>
+      </div>
+
+      <div class="row g-3 mt-1">
+        <div class="col-md-4" data-reveal data-reveal-style="card" style="--delay:0ms">
+          <div class="metric">
+            <div class="n">공유</div>
+            <div class="l">흩어진 지식을 모아서, 흐름으로 정리해 공개한다.</div>
+          </div>
+        </div>
+        <div class="col-md-4" data-reveal data-reveal-style="card" style="--delay:120ms">
+          <div class="metric">
+            <div class="n">재현</div>
+            <div class="l">누가 따라해도 같은 결과가 나오도록 문서화한다.</div>
+          </div>
+        </div>
+        <div class="col-md-4" data-reveal data-reveal-style="card" style="--delay:240ms">
+          <div class="metric">
+            <div class="n">운영</div>
+            <div class="l">실서비스에 필요한 운영 기본기를 기본값으로 둔다.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="quote mt-4" data-reveal style="--delay:140ms">
+        <div class="fw-bold">“정보를 공유하면, 누군가의 시간이 절약된다.”</div>
+        <div class="text-muted mt-1">TH-Study는 그 시간을 아껴주는 아카이브를 목표로 한다.</div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="brand-section" id="skills">
+      <div class="section-head">
+        <div class="section-kicker" data-reveal><i class="bi bi-stack"></i> SKILLS</div>
+        <div class="section-title" data-reveal style="--delay:80ms">
+          TH-Study 프로젝트를 구성하는 기술 스택
+        </div>
+        <div class="section-desc" data-reveal style="--delay:140ms">
+          (설명 문구 없이) 프로젝트 구성 요소만 정리.
+        </div>
+      </div>
+
+      <div class="row g-3 mt-1">
+        <div class="col-lg-6" data-reveal data-reveal-style="card" style="--delay:0ms">
+          <div class="skillbox">
+            <div class="head"><i class="bi bi-code-slash"></i> Backend / App</div>
+            <div class="skillicons">
+              <span><i class="devicon-php-plain colored"></i> PHP</span>
+              <span><i class="devicon-laravel-plain colored"></i> Laravel</span>
+              <span><i class="devicon-java-plain colored"></i> Spring</span>
+              <span><i class="devicon-python-plain colored"></i> FastAPI</span>
+              <span><i class="devicon-nodejs-plain colored"></i> Node</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6" data-reveal data-reveal-style="card" style="--delay:140ms">
+          <div class="skillbox">
+            <div class="head"><i class="bi bi-cloud"></i> Infra / Ops</div>
+            <div class="skillicons">
+              <span><i class="devicon-amazonwebservices-plain-wordmark colored"></i> AWS</span>
+              <span><i class="devicon-linux-plain colored"></i> Ubuntu</span>
+              <span><i class="devicon-nginx-original colored"></i> Nginx</span>
+              <span><i class="devicon-mysql-plain colored"></i> MySQL</span>
+              <span><i class="devicon-docker-plain colored"></i> Docker</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- START -->
+    <section class="brand-section" id="start">
+      <div class="section-head">
+        <div class="section-kicker" data-reveal><i class="bi bi-rocket-takeoff"></i> START</div>
+        <div class="section-title" data-reveal style="--delay:80ms">
+          지금 시작
+        </div>
+        <div class="section-desc" data-reveal style="--delay:140ms">
+          서버 개설 가이드부터 따라가면, 서비스가 실제로 켜지는 흐름으로 연결된다.
+        </div>
+      </div>
+
+      <div class="cta mt-2" data-reveal data-reveal-style="card" style="--delay:140ms">
+        <div>
+          <div class="t1">서버 개설부터 시작</div>
+          <div class="t2">도메인 · SSL · 배포 · 운영까지 연결되는 문서 흐름</div>
+        </div>
+        <div class="d-flex gap-2 flex-wrap">
+          <a class="btn btn-primary btn-lg" href="/guides/server-setup" style="border-radius:14px; font-weight:1100;">
+            시작하기 <i class="bi bi-arrow-right-short"></i>
+          </a>
+          <a class="btn btn-outline-light btn-lg" href="#top" style="border-radius:14px; font-weight:1100;">
+            맨 위로 <i class="bi bi-arrow-up-short"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="py-4">
+    <div class="container" style="max-width: var(--maxw);">
+      <div class="d-flex flex-column flex-md-row justify-content-between gap-2">
+        <div class="text-muted small">© TH-Study.</div>
+        <div class="d-flex gap-3 small">
+          <a class="text-muted" href="/brand" style="text-decoration:none;">브랜딩</a>
+          <a class="text-muted" href="/guides" style="text-decoration:none;">가이드</a>
+          <a class="text-muted" href="/roadmap" style="text-decoration:none;">로드맵</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+
+  <script>
+    $(function () {
+      // Reduced motion
+      let prefersReduced = false;
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        prefersReduced = true;
+      }
+
+      // Reveal
+      let $reveal = $('[data-reveal]');
+      if (prefersReduced) {
+        $reveal.addClass('is-in');
+      } else if ('IntersectionObserver' in window) {
+        let io = new IntersectionObserver(function (entries) {
+          $.each(entries, function (_, entry) {
+            if (entry.isIntersecting) {
+              $(entry.target).addClass('is-in');
+              io.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
+
+        $reveal.each(function () { io.observe(this); });
+      } else {
+        $reveal.addClass('is-in');
+      }
+
+      // Typing (Hero title)
+      function typeText($el, text, speed, startDelay) {
+        if (prefersReduced) {
+          $el.text(text).addClass('is-done');
+          return;
+        }
+        $el.text('').addClass('typing');
+        let i = 0;
+        setTimeout(function () {
+          let timer = setInterval(function () {
+            $el.text($el.text() + text.charAt(i));
+            i++;
+            if (i >= text.length) {
+              clearInterval(timer);
+              $el.addClass('is-done');
+            }
+          }, speed);
+        }, startDelay);
+      }
+
+      $('[data-typing]').each(function () {
+        let $el = $(this);
+        let text = $el.attr('data-typing') || $el.text() || '';
+        let speed = parseInt($el.attr('data-typing-speed') || '55', 10);
+        let delay = parseInt($el.attr('data-typing-delay') || '160', 10);
+        if (!speed || speed < 10) speed = 55;
+        if (!delay || delay < 0) delay = 0;
+        typeText($el, text, speed, delay);
+      });
+
+      // Anchor offset fix (sticky nav)
+      function scrollToHash(hash) {
+        let $target = $(hash);
+        if ($target.length === 0) return;
+
+        let stickyH = $('.section-nav').outerHeight() || 0;
+        let top = $target.offset().top - stickyH - 12;
+
+        $('html, body').stop().animate({ scrollTop: top }, 420);
+      }
+
+      $(document).on('click', 'a.sec-link, a.dotlink', function (e) {
+        let href = $(this).attr('href');
+        if (!href || href.charAt(0) !== '#') return;
+        e.preventDefault();
+        scrollToHash(href);
+        history.replaceState(null, '', href);
+      });
+
+      // Section spy (active nav + dots)
+      let sectionIds = ['why','only','framework','library','mission','skills','start'];
+
+      function setActive(id){
+        $('.sec-link').removeClass('active');
+        $('.sec-link[data-link="'+id+'"]').addClass('active');
+
+        $('.dotlink').removeClass('active');
+        $('.dotlink[data-target="'+id+'"]').addClass('active');
+      }
+
+      if ('IntersectionObserver' in window) {
+        let spy = new IntersectionObserver(function (entries) {
+          let visible = [];
+          $.each(entries, function (_, entry) {
+            if (entry.isIntersecting) visible.push(entry);
+          });
+          if (visible.length === 0) return;
+
+          let mid = window.innerHeight / 2;
+          visible.sort(function(a,b){
+            let da = Math.abs(a.boundingClientRect.top - mid);
+            let db = Math.abs(b.boundingClientRect.top - mid);
+            return da - db;
+          });
+
+          let id = $(visible[0].target).attr('id');
+          if (id) setActive(id);
+        }, { threshold: 0.35 });
+
+        for (let i=0; i<sectionIds.length; i++){
+          let el = document.getElementById(sectionIds[i]);
+          if (el) spy.observe(el);
+        }
+      } else {
+        $(window).on('scroll', function () {
+          let stickyH = $('.section-nav').outerHeight() || 0;
+          let sTop = $(window).scrollTop() + stickyH + 60;
+          let current = sectionIds[0];
+
+          for (let i=0; i<sectionIds.length; i++){
+            let $sec = $('#'+sectionIds[i]);
+            if ($sec.length && $sec.offset().top <= sTop) current = sectionIds[i];
+          }
+          setActive(current);
+        }).trigger('scroll');
+      }
+
+      setActive('why');
+    });
+  </script>
+</body>
+</html>
