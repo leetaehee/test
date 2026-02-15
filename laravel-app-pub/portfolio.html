@@ -13,6 +13,10 @@
     :root{ --ink:#0f172a; --muted:#475569; --line:#e2e8f0; --hero1:#020617; --hero2:#0f172a; --accent:#3b82f6; --card:rgba(255,255,255,.08); --cardLine:rgba(255,255,255,.14);}
     body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;color:var(--ink);background:#fff;}
     .hero{background:radial-gradient(1200px 600px at 15% 15%, rgba(59,130,246,.28), transparent 60%),radial-gradient(900px 500px at 85% 30%, rgba(99,102,241,.22), transparent 55%),linear-gradient(180deg, var(--hero1), var(--hero2));color:#fff;}
+    .hero-title{font-size:clamp(1.72rem, 1.9vw + .95rem, 3rem);line-height:1.2;letter-spacing:-.02em;max-width:18ch;}
+    .hero-sub{max-width:46ch;}
+    .hero-kicker{font-size:clamp(1.18rem, .6vw + 1rem, 1.55rem) !important;}
+    .hero-sub{font-size:clamp(1.02rem, .42vw + .9rem, 1.3rem) !important;line-height:1.6;}
     .pill{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--cardLine);background:rgba(255,255,255,.06);padding:.45rem .85rem;border-radius:999px;color:rgba(255,255,255,.82);backdrop-filter: blur(10px);font-size:.92rem;}
     .accent{color:var(--accent);}
     .hero-card{border:1px solid var(--cardLine);background:var(--card);border-radius:18px;box-shadow:0 12px 44px rgba(0,0,0,.35);backdrop-filter: blur(10px);}
@@ -38,11 +42,42 @@
     .callout{border-left:6px solid var(--accent);background:#eff6ff;border-radius:14px;padding:16px 18px;color:var(--ink);}
     .svg-wrap{border:1px solid var(--line);border-radius:16px;background:#fff;padding:16px;}
     .svg-flow{width:100%;height:auto;}
-    .readme h1,.readme h2,.readme h3,.readme h4,.readme h5,.readme h6{font-weight:950;letter-spacing:-.02em;}
-    .readme h2{margin-top:30px;}
-    .readme p{margin:10px 0;}
-    .readme ul,.readme ol{margin:10px 0 14px 18px;}
+    .readme{color:#1e293b;}
+    .readme h1,.readme h2,.readme h3,.readme h4,.readme h5,.readme h6{font-weight:900 !important;letter-spacing:-.02em;line-height:1.28;margin:0 0 .72rem;}
+    .readme > h1{font-family:"Trebuchet MS","Segoe UI","Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;font-size:3rem !important;margin-top:.2rem;color:#0b3a6e;}
+    .readme h2{font-size:2.05rem !important;margin-top:2.3rem;padding-bottom:.15rem;border-bottom:1px solid #e2e8f0;color:#0f355f;}
+    .readme h3{font-size:1.5rem !important;margin-top:1.45rem;color:#17406b;}
+    .readme h4{font-size:1.22rem !important;margin-top:1.1rem;}
+    .readme h5,.readme h6{font-size:1.08rem !important;margin-top:.9rem;}
+    .readme p{margin:10px 0;font-size:1.08rem;line-height:1.72;color:#334155;}
+    .readme ul{margin:10px 0 14px 18px;}
+    .readme ol{margin:10px 0 14px;padding-left:1.6rem;}
+    .readme ol li{margin:.32rem 0;padding-left:.24rem;line-height:1.6;}
+    .readme ol li::marker{font-size:.88em;font-weight:700;color:#64748b;}
+    .readme-summary p{color:#334155;margin:0 0 10px;}
+    .readme-summary ul{margin:0;padding-left:1.2rem;color:#334155;}
+    .readme-summary li{margin:.35rem 0;line-height:1.55;}
+    .readme-toggle{border:1px solid var(--line);border-radius:16px;padding:12px 14px;background:#fff;box-shadow:0 10px 30px rgba(2,6,23,.04);}
+    .readme-toggle > summary{cursor:pointer;list-style:none;font-weight:900;color:#0f355f;display:flex;align-items:center;gap:.72rem;font-size:1.05rem;line-height:1.2;}
+    .readme-toggle > summary::-webkit-details-marker{display:none;}
+    .readme-toggle > summary::before{
+      content:"▶";
+      font-size:1.12rem;
+      font-weight:900;
+      color:#1d4ed8;
+      width:1.1rem;
+      text-align:center;
+      transition:transform .18s ease;
+      transform:translateY(-1px);
+    }
+    .readme-toggle[open] > summary::before{content:"▼";}
     blockquote{border-left:4px solid #cbd5e1;padding-left:12px;color:#334155;}
+    @media (max-width: 768px){
+      .readme > h1{font-size:2.2rem !important;}
+      .readme h2{font-size:1.62rem !important;}
+      .readme h3{font-size:1.3rem !important;}
+      .readme p,.readme li{font-size:1rem;}
+    }
 
     @media print{.no-print{display:none !important;}.section{padding:34px 0;}a{color:inherit;text-decoration:none;}.hero,.codeblock{-webkit-print-color-adjust:exact;print-color-adjust:exact;}.box{box-shadow:none;}}
   </style>
@@ -54,9 +89,9 @@
     <div class="row align-items-center g-4">
       <div class="col-lg-7">
         <div class="pill mb-3"><i class="bi bi-stars"></i><span>티에이치스터디</span></div>
-        <h1 class="display-5 fw-bold mb-3">성장하는 개발자를, <span class="accent">운영하는 개발자로</span>.</h1>
-        <p class="fs-5 text-white-50 mb-2">개발자 성장 플랫폼</p>
-        <p class="lead text-white-50 mb-4">기획·디자인·개발·배포·백업까지, “서비스를 굴리는 경험”을 축적한다.</p>
+        <h1 class="hero-title fw-bold mb-3">나를 뛰어넘는 <span class="accent">개발자</span>, 운영까지 설계하는 개발자.</h1>
+        <p class="fs-5 text-white-50 mb-2 hero-kicker">개발자 성장 플랫폼</p>
+        <p class="lead text-white-50 mb-4 hero-sub">구현을 넘어 운영·기획·디자인·브랜드까지 확장하며, 서비스를 직접 만들고 운영하는 역량을 쌓는다.</p>
         <div class="d-flex flex-wrap gap-3 no-print">
           <a class="btn btn-primary btn-lg rounded-4 px-4" href="https://www.th-study.com/" target="_blank" rel="noreferrer"><i class="bi bi-globe2 me-2"></i>사이트</a>
           <a class="btn btn-outline-light btn-lg rounded-4 px-4" href="https://github.com/th-study-group/th-study" target="_blank" rel="noreferrer"><i class="bi bi-github me-2"></i>GitHub</a>
@@ -66,8 +101,8 @@
         <div class="hero-card p-4">
           <div class="fw-bold text-white mb-2">요약</div>
           <ul class="text-white-50 mb-3" style="margin-left:18px;">
-            <li>운영: AWS Lightsail Ubuntu 직접 구성(도커 미사용)</li>
-            <li>검증: 로컬 Docker로 Ubuntu 환경 재현</li>
+            <li>운영: AWS Lightsail Ubuntu 직접 구성</li>
+            <li>검증: 로컬 환경 및 Docker Compose 이용하여 테스트</li>
             <li>백업: <code style="color:#fff;">/backup/mysql</code> 14일 보관</li>
           </ul>
           <div class="fw-bold text-white mb-2">Tech Stack</div>
@@ -98,8 +133,9 @@
             <li><a href="#deploy">5. 배포</a><span class="toc-dots"></span><span class="toc-desc">SSH + git pull</span></li>
             <li><a href="#infra">6. 운영 인프라</a><span class="toc-dots"></span><span class="toc-desc">Lightsail + Swap</span></li>
             <li><a href="#backup">7. DB 백업</a><span class="toc-dots"></span><span class="toc-desc">14일 정책</span></li>
-            <li><a href="#docker">8. 개발 검증(Docker)</a><span class="toc-dots"></span><span class="toc-desc">compose on/off</span></li>
-            <li><a href="#appendix">9. README 원문</a><span class="toc-dots"></span><span class="toc-desc">전체 포함</span></li>
+            <li><a href="#docker">8. 개발 검증 Docker</a><span class="toc-dots"></span><span class="toc-desc">compose on/off</span></li>
+            <li><a href="#queue-service">9. Queue 영구 실행 systemd</a><span class="toc-dots"></span><span class="toc-desc">서비스 등록</span></li>
+            <li><a href="#appendix">10. README 원문</a><span class="toc-dots"></span><span class="toc-desc">전체 포함</span></li>
           </ul>
         </div>
       </div>
@@ -117,7 +153,12 @@
         <div class="col-md-4"><div class="p-3 border rounded-4"><div class="fw-bold">나를 뛰어넘어 성장하는 개발자</div><div class="text-secondary mt-1">기록 → 개선 → 반복</div></div></div>
         <div class="col-md-4"><div class="p-3 border rounded-4"><div class="fw-bold">장인정신을 지닌 개발자</div><div class="text-secondary mt-1">속도 + 구조 + 운영 균형</div></div></div>
       </div>
-      <div class="callout mt-3"><strong>범위</strong><br>기획/디자인/개발/배포/백업/로그까지 한 프로젝트 안에서 전부 경험하고 문서로 남긴다.</div>
+      <div class="callout mt-3">
+        <strong>범위</strong><br>
+        기획/디자인/개발/배포/백업/로그까지 한 프로젝트 안에서 전부 경험하고 문서로 남깁니다.
+        <br>
+        기술 역량은 PHP/Laravel에 한정하지 않고 Java 기반 백엔드와 JavaScript 생태계까지 확장합니다.
+      </div>
     </div>
   </div>
 </section>
@@ -129,16 +170,27 @@
       <div class="table-responsive">
         <table class="table table-bordered align-middle mb-0">
           <thead><tr><th style="width:28%">항목</th><th>버전</th></tr></thead>
-          <tbody><tr><td class='fw-bold'>Laravel</td><td>10</td></tr>
-<tr><td class='fw-bold'>PHP</td><td>8.2</td></tr>
-<tr><td class='fw-bold'>MySQL</td><td>[MySQL 버전]</td></tr>
-<tr><td class='fw-bold'>Ubuntu</td><td>Ubuntu 22.04</td></tr>
-<tr><td class='fw-bold'>Nginx</td><td>[Nginx 버전]</td></tr>
-<tr><td class='fw-bold'>Node.js</td><td>[Node 버전]</td></tr>
-<tr><td class='fw-bold'>Vite</td><td>[Vite 버전]</td></tr>
-<tr><td class='fw-bold'>Bootstrap</td><td>5</td></tr>
-<tr><td class='fw-bold'>Docker</td><td>[Docker 버전]</td></tr></tbody>
+          <tbody>
+            <tr><td class='fw-bold'>Laravel</td><td>10</td></tr>
+            <tr><td class='fw-bold'>PHP</td><td>8.2</td></tr>
+            <tr><td class='fw-bold'>MySQL</td><td>8.0.45</td></tr>
+            <tr><td class='fw-bold'>Ubuntu</td><td>Ubuntu 22.04</td></tr>
+            <tr><td class='fw-bold'>Nginx</td><td>1.18.0</td></tr>
+            <tr><td class='fw-bold'>Node.js</td><td>20.20.0</td></tr>
+            <tr><td class='fw-bold'>Vite</td><td>5.4.21</td></tr>
+            <tr><td class='fw-bold'>Bootstrap</td><td>5</td></tr>
+            <tr><td class='fw-bold'>Docker</td><td>27.5.1</td></tr>
+          </tbody>
         </table>
+      </div>
+      <div class="callout mt-4">
+        <strong>프론트 라이브러리 구성</strong><br>
+        사용 라이브러리: Bootstrap 5, jQuery 3.7.1, Flatpickr, Bootstrap Icons, Devicon
+        <br>
+        기준 파일:
+        <br><code>resources/views/layouts/app.blade.php</code>
+        <br><code>resources/views/partials/head-styles.blade.php</code>
+        <br><code>resources/views/partials/head-scripts.blade.php</code>
       </div>
     </div>
   </div>
@@ -192,7 +244,7 @@
     <h2 class="h2x mb-3">4. 실행</h2>
     <div class="box pad">
     <div class="codeblock">
-      <div class="codehdr"><span>bash · 로컬 실행(예시)</span><button class="copybtn no-print" onclick="copyFrom('#localRun')">복사</button></div>
+      <div class="codehdr"><span>bash · 로컬 실행(예시)</span><button class="copybtn no-print" onclick="copyFrom('#localRun', this)">복사</button></div>
       <pre id="localRun"><code># 의존성 설치
 composer install
 npm install
@@ -210,12 +262,12 @@ php artisan serve --host=0.0.0.0 --port=8000</code></pre>
     </div>
     <div class="mt-4">
     <div class="codeblock">
-      <div class="codehdr"><span>bash · 큐 사용(예시)</span><button class="copybtn no-print" onclick="copyFrom('#queueRun')">복사</button></div>
-      <pre id="queueRun"><code># 큐 워커 실행
-php artisan queue:work
+      <div class="codehdr"><span>bash · 큐 상태/점검(운영 예시)</span><button class="copybtn no-print" onclick="copyFrom('#queueRun', this)">복사</button></div>
+      <pre id="queueRun"><code># 서비스 상태 확인
+sudo systemctl status th-study-queue
 
-# 배포 후 작업 반영(재시작)
-php artisan queue:restart
+# 로그 확인
+journalctl -u th-study-queue -f
 
 # 실패 작업 확인(필요 시)
 php artisan queue:failed</code></pre>
@@ -229,13 +281,13 @@ php artisan queue:failed</code></pre>
     <h2 class="h2x mb-3">5. 배포</h2>
     <div class="box pad">
     <div class="codeblock">
-      <div class="codehdr"><span>bash · 서버 접속</span><button class="copybtn no-print" onclick="copyFrom('#sshCmd')">복사</button></div>
+      <div class="codehdr"><span>bash · 서버 접속</span><button class="copybtn no-print" onclick="copyFrom('#sshCmd', this)">복사</button></div>
       <pre id="sshCmd"><code>ssh [유저명or아이디]@[서버IP]
 # 예) ssh ubuntu@1.2.3.4</code></pre>
     </div>
     <div class="mt-4">
     <div class="codeblock">
-      <div class="codehdr"><span>bash · 배포(서버에서 실행)</span><button class="copybtn no-print" onclick="copyFrom('#deployCmd')">복사</button></div>
+      <div class="codehdr"><span>bash · 배포(서버에서 실행)</span><button class="copybtn no-print" onclick="copyFrom('#deployCmd', this)">복사</button></div>
       <pre id="deployCmd"><code>cd /var/www/th-study
 
 # 최신 코드
@@ -251,11 +303,20 @@ npm run build
 # DB 반영
 php artisan migrate --force
 
-# 큐 반영
-php artisan queue:restart
+# 큐 서비스 재시작(배포 반영)
+sudo systemctl restart th-study-queue
 
 # 웹서버 리로드(필요 시)
 sudo systemctl reload nginx</code></pre>
+    </div>
+    </div>
+    <div class="callout mt-4">
+      <strong>CI/CD 운영 기준</strong><br>
+      <ul class="mb-0" style="margin-left:18px;">
+        <li>Self-hosted runner 기준으로 <code>main</code> push 시 배포 자동화 구성</li>
+        <li>코드 동기화 -> <code>composer install --no-dev</code> -> <code>php artisan migrate --force</code></li>
+        <li>웹서버 reload 및 큐 서비스 재시작까지 포함</li>
+      </ul>
     </div>
     </div></div>
   </div>
@@ -263,7 +324,7 @@ sudo systemctl reload nginx</code></pre>
 
 <section id="infra" class="section">
   <div class="container">
-    <h2 class="h2x mb-3">6. 운영 인프라 (AWS Lightsail)</h2>
+    <h2 class="h2x mb-3">6. 운영 인프라 AWS Lightsail</h2>
     <div class="box pad">
       <div class="table-responsive">
         <table class="table table-bordered align-middle mb-0">
@@ -278,7 +339,7 @@ sudo systemctl reload nginx</code></pre>
       </div>
       <div class="mt-4">
     <div class="codeblock">
-      <div class="codehdr"><span>bash · Swap 2GB(메모리 보강)</span><button class="copybtn no-print" onclick="copyFrom('#swapCmd')">복사</button></div>
+      <div class="codehdr"><span>bash · Swap 2GB(메모리 보강)</span><button class="copybtn no-print" onclick="copyFrom('#swapCmd', this)">복사</button></div>
       <pre id="swapCmd"><code>sudo fallocate -l 2G /swapfile
 sudo chmod 600 /swapfile
 sudo mkswap /swapfile
@@ -287,6 +348,41 @@ sudo swapon /swapfile
 swapon --show
 free -h</code></pre>
     </div>
+    </div>
+    <div class="mt-4">
+      <div class="codeblock">
+        <div class="codehdr"><span>bash · SSL 설정(Certbot + Nginx)</span><button class="copybtn no-print" onclick="copyFrom('#sslCmd', this)">복사</button></div>
+        <pre id="sslCmd"><code>sudo apt update
+sudo apt install -y certbot python3-certbot-nginx
+sudo certbot --nginx -d example.com -d www.example.com
+sudo certbot renew --dry-run</code></pre>
+      </div>
+    </div>
+    <div class="mt-4">
+      <div class="codeblock">
+        <div class="codehdr"><span>bash · 빠른 운영 점검</span><button class="copybtn no-print" onclick="copyFrom('#opsQuick', this)">복사</button></div>
+          <pre id="opsQuick"><code>docker compose ps
+php artisan about --only=environment,drivers
+php artisan migrate:status
+sudo systemctl status nginx
+sudo systemctl status th-study-queue</code></pre>
+        </div>
+      </div>
+    <div class="callout mt-4">
+      <strong>운영 경로 기준</strong><br>
+      <ul class="mb-0" style="margin-left:18px;">
+        <li>앱 루트: <code>/var/www/th-study</code></li>
+        <li>Nginx 로그: <code>/var/log/nginx/access.log</code>, <code>/var/log/nginx/error.log</code></li>
+        <li>Laravel 로그: <code>/var/www/th-study/storage/logs</code></li>
+      </ul>
+    </div>
+    <div class="callout mt-3">
+      <strong>GitHub 조직 운영 기준</strong><br>
+      <ul class="mb-0" style="margin-left:18px;">
+        <li>Organization/Team 기반 권한 Read/Write/Admin 분리</li>
+        <li><code>main</code> 브랜치 보호 규칙 적용</li>
+        <li>배포 토큰 최소 권한 원칙 적용</li>
+      </ul>
     </div>
     </div>
   </div>
@@ -307,7 +403,7 @@ free -h</code></pre>
       </div>
       <div class="mt-4">
     <div class="codeblock">
-      <div class="codehdr"><span>bash · 14일 지난 백업 삭제</span><button class="copybtn no-print" onclick="copyFrom('#bkClean')">복사</button></div>
+      <div class="codehdr"><span>bash · 14일 지난 백업 삭제</span><button class="copybtn no-print" onclick="copyFrom('#bkClean', this)">복사</button></div>
       <pre id="bkClean"><code>find /backup/mysql -type f -mtime +14 -delete</code></pre>
     </div>
     </div>
@@ -317,12 +413,12 @@ free -h</code></pre>
 
 <section id="docker" class="section">
   <div class="container">
-    <h2 class="h2x mb-3">8. 개발 검증(Docker)</h2>
+    <h2 class="h2x mb-3">8. 개발 검증 Docker</h2>
     <div class="box pad">
-      <p class="leadx mb-2">운영 서버를 하나 더 사지 않고도, 배포 전 동일한 Ubuntu 기반 환경을 맞추기 위해 Docker Compose를 사용한다. 운영은 Ubuntu 직접 설치로 간다.</p>
+      <p class="leadx mb-2">배포 전 동일한 Ubuntu 기반 환경을 검증하기 위해 Docker Compose를 사용합니다.</p>
       
     <div class="codeblock">
-      <div class="codehdr"><span>bash · Docker Compose on/off</span><button class="copybtn no-print" onclick="copyFrom('#dcOnOff')">복사</button></div>
+      <div class="codehdr"><span>bash · Docker Compose on/off</span><button class="copybtn no-print" onclick="copyFrom('#dcOnOff', this)">복사</button></div>
       <pre id="dcOnOff"><code># 켜기
 docker compose up -d
 
@@ -338,7 +434,7 @@ docker compose down</code></pre>
     
       <div class="mt-4">
     <div class="codeblock">
-      <div class="codehdr"><span>bash · 도커 MySQL 접속(예시)</span><button class="copybtn no-print" onclick="copyFrom('#dcMysql')">복사</button></div>
+      <div class="codehdr"><span>bash · 도커 MySQL 접속(예시)</span><button class="copybtn no-print" onclick="copyFrom('#dcMysql', this)">복사</button></div>
       <pre id="dcMysql"><code>docker exec -it th-mysql mysql -u[유저명or아이디] -p
 
 USE [DB이름];
@@ -349,10 +445,61 @@ SHOW TABLES;</code></pre>
   </div>
 </section>
 
+<section id="queue-service" class="section">
+  <div class="container">
+    <h2 class="h2x mb-3">9. Queue 영구 실행 systemd</h2>
+    <div class="box pad">
+      <div class="codeblock">
+        <div class="codehdr"><span>bash · 서비스 파일 생성</span><button class="copybtn no-print" onclick="copyFrom('#queueSvcCreate', this)">복사</button></div>
+        <pre id="queueSvcCreate"><code>sudo nano /etc/systemd/system/th-study-queue.service</code></pre>
+      </div>
+      <div class="mt-4">
+        <div class="codeblock">
+          <div class="codehdr"><span>ini · /etc/systemd/system/th-study-queue.service</span><button class="copybtn no-print" onclick="copyFrom('#queueSvcFile', this)">복사</button></div>
+          <pre id="queueSvcFile"><code>[Unit]
+Description=Laravel Queue Worker
+After=network.target mysql.service php8.2-fpm.service
+
+[Service]
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/th-study
+ExecStart=/usr/bin/php artisan queue:work --sleep=3 --tries=3 --timeout=90
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target</code></pre>
+        </div>
+      </div>
+      <div class="mt-4">
+        <div class="codeblock">
+          <div class="codehdr"><span>bash · 서비스 등록/시작</span><button class="copybtn no-print" onclick="copyFrom('#queueSvcStart', this)">복사</button></div>
+          <pre id="queueSvcStart"><code>sudo systemctl daemon-reload
+sudo systemctl enable th-study-queue
+sudo systemctl start th-study-queue
+sudo systemctl status th-study-queue</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="appendix" class="section bg-light">
   <div class="container">
-    <h2 class="h2x mb-3">9. README 원문</h2>
-    <div class="box pad readme">
+    <h2 class="h2x mb-3">10. README 원문</h2>
+    <div class="box pad readme-summary">
+      <p class="fw-bold mb-2">포트폴리오 관점 요약</p>
+      <ul>
+        <li>Laravel 10 기반 개발자 성장 플랫폼을 기획부터 운영까지 직접 구축</li>
+        <li>핵심 아키텍처는 Controller-Service-Repository 분리와 정책 기반 접근 제어</li>
+        <li>메일/큐/로그/백업 포함 운영 흐름을 실서비스 수준으로 문서화</li>
+        <li>배포는 SSH + git pull + migrate + systemd queue 재시작 기준으로 표준화</li>
+      </ul>
+    </div>
+    <details class="readme-toggle mt-3">
+      <summary>README 원문 펼쳐보기</summary>
+      <div class="box pad readme mt-3">
       <h1 id="readme-티에이치-스터디---개발자성장플랫폼">티에이치 스터디 - 개발자성장플랫폼</h1>
 <p>Laravel 기반 개인 개발 플랫폼입니다. 기록, 운영, 커뮤니케이션 기능을 하나로 묶어 성장 과정을 서비스 형태로 관리합니다.</p>
 <p>이 문서는 기능이 커져도 빠르게 구조를 파악할 수 있도록 <strong>핵심 정책과 동작 원리만</strong> 정리합니다.</p>
@@ -387,7 +534,27 @@ SHOW TABLES;</code></pre>
 <li>Date UI: Flatpickr</li>
 <li>Queue: Database queue</li>
 <li>Realtime(실험): Pusher + Laravel Echo</li>
-<li>Infra: Docker(app, queue, nginx, mysql, node), self-hosted deploy</li>
+<li>Infra: Ubuntu self-hosted deploy</li>
+</ul>
+<h3 id="readme-프론트-라이브러리-구성appbladephp-기준">프론트 라이브러리 구성 <code>app.blade.php</code> 기준</h3>
+<p>로딩 기준 파일:</p>
+<ul>
+<li><code>resources/views/layouts/app.blade.php</code></li>
+<li><code>resources/views/partials/head-styles.blade.php</code></li>
+<li><code>resources/views/partials/head-scripts.blade.php</code></li>
+</ul>
+<p>사용 중인 라이브러리:</p>
+<ul>
+<li>UI Framework: Bootstrap 5 (<code>public/css/bootstrap.min.css</code>, <code>public/js/bootstrap.bundle.min.js</code>)</li>
+<li>DOM/이벤트: jQuery 3.7.1 (<code>public/js/jquery-3.7.1.min.js</code>)</li>
+<li>Date Picker: Flatpickr (CDN)</li>
+<li>Icon: Bootstrap Icons (CDN)</li>
+<li>Tech Icon: Devicon (CDN)</li>
+</ul>
+<p>외부 에셋/아이콘 출처:</p>
+<ul>
+<li>Unsplash: <code>https://unsplash.com/ko</code></li>
+<li>Devicon: <code>https://devicon.dev/</code></li>
 </ul>
 <h2 id="readme-3-디렉터리-빠른-가이드">3. 디렉터리 빠른 가이드</h2>
 <div class="codeblock"><div class="codehdr"><span>text</span></div><pre><code>app/
@@ -539,6 +706,9 @@ php artisan serve</code></pre></div>
 <p>프론트 자산 개발:</p>
 <div class="codeblock"><div class="codehdr"><span>bash</span></div><pre><code>npm install
 npm run dev</code></pre></div>
+<p>프론트 자산(운영 배포용 빌드):</p>
+<div class="codeblock"><div class="codehdr"><span>bash</span></div><pre><code>npm install
+npm run build</code></pre></div>
 <h2 id="readme-11-docker-실행-개요">11. Docker 실행 개요</h2>
 <p><code>docker-compose.yml</code> 기준 서비스:</p>
 <ul>
@@ -548,14 +718,83 @@ npm run dev</code></pre></div>
 <li><code>mysql</code></li>
 <li><code>node</code> (vite dev server)</li>
 </ul>
-<h2 id="readme-12-운영-보안-가이드">12. 운영 보안 가이드</h2>
+<h2 id="readme-12-인프라-구축-핵심">12. 인프라 구축 핵심</h2>
+<p>아래는 인프라 문서에서 <strong>개발환경 구축에 직접 필요한 내용만</strong> 압축한 체크리스트입니다.</p>
+<h3 id="readme-121-로컬-docker-개발환경">12.1 로컬 Docker 개발환경</h3>
+<p>목표: 로컬에서 <code>app + nginx + mysql + node + queue</code>를 분리 실행</p>
+<ol>
+<li>준비: Docker Desktop 실행, <code>docker -v</code>, <code>docker compose version</code> 확인</li>
+<li>환경 파일: <code>.env_docker</code> 사용, 핵심 <code>APP_ENV=docker</code>, DB는 <code>DB_HOST=mysql</code></li>
+<li>부트스트랩 분기: <code>bootstrap/app.php</code>에서 Docker 환경 시 <code>.env_docker</code> 로드</li>
+<li>경로 규칙: 프로젝트 마운트 경로 <code>/var/www</code>, nginx root <code>/var/www/public</code></li>
+</ol>
+<div class="codeblock"><div class="codehdr"><span>bash</span></div><pre><code>docker compose down -v
+docker compose up -d --build
+docker compose ps</code></pre></div>
+<div class="codeblock"><div class="codehdr"><span>bash</span></div><pre><code>docker exec -it th-app php artisan key:generate --force
+docker exec -it th-app php artisan migrate</code></pre></div>
+<div class="codeblock"><div class="codehdr"><span>bash</span></div><pre><code>docker compose up -d
+docker compose down
+docker compose restart
+docker compose ps</code></pre></div>
+<p>접속 포트(기본 예시): Web <code>http://localhost:8080</code>, Vite <code>http://localhost:5173</code>, MySQL <code>127.0.0.1:3307</code></p>
+<h3 id="readme-122-서버-기본-구성">12.2 서버 기본 구성</h3>
+<ul>
+<li>AWS Lightsail (Ubuntu 22.04 LTS), SSH Key 기반 접속</li>
+<li>타임존 <code>Asia/Seoul</code> 통일, 배포 경로 <code>/var/www/th-study</code> 고정</li>
+<li>Nginx 서버블록 + HTTPS(Let's Encrypt) 적용</li>
+<li>Queue 워커 상시 실행(systemd)</li>
+</ul>
+<h3 id="readme-123-ssl">12.3 SSL</h3>
+<div class="codeblock"><div class="codehdr"><span>bash</span></div><pre><code>sudo apt update
+sudo apt install -y certbot python3-certbot-nginx
+sudo certbot --nginx -d example.com -d www.example.com
+sudo certbot renew --dry-run</code></pre></div>
+<h3 id="readme-124-메모리-안정화">12.4 메모리 안정화</h3>
+<div class="codeblock"><div class="codehdr"><span>bash</span></div><pre><code>sudo fallocate -l 2G /swapfile
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+free -h</code></pre></div>
+<h3 id="readme-125-cicd-핵심">12.5 CI/CD 핵심</h3>
+<ul>
+<li><code>main</code> push 시 코드 동기화, <code>composer install --no-dev</code>, <code>php artisan migrate --force</code>, 웹서버 reload, 큐 반영 수행</li>
+<li>자동배포 스크립트에는 민감정보 하드코딩 금지, 환경변수/비밀 저장소 사용</li>
+</ul>
+<h3 id="readme-126-db-백업복구-최소-운영안">12.6 DB 백업/복구 최소 운영안</h3>
+<ul>
+<li>풀백업(일 1회) + 증분(binlog, 시간 단위) + 14일 보관 후 자동삭제</li>
+<li>복구: 최신 풀백업 복원 후 해당 시점 이후 binlog 순차 적용</li>
+</ul>
+<h3 id="readme-127-빠른-점검-명령어">12.7 빠른 점검 명령어</h3>
+<div class="codeblock"><div class="codehdr"><span>bash</span></div><pre><code>docker compose ps
+php artisan about --only=environment,drivers
+php artisan migrate:status
+php artisan queue:work --once</code></pre></div>
+<h3 id="readme-128-운영-경로-기준">12.8 운영 경로 기준</h3>
+<ul>
+<li>앱 루트: <code>/var/www/th-study</code></li>
+<li>Nginx 로그: <code>/var/log/nginx/access.log</code>, <code>/var/log/nginx/error.log</code></li>
+<li>Laravel 로그: <code>/var/www/th-study/storage/logs</code></li>
+<li>DB 풀백업: <code>/backup/mysql/full</code></li>
+<li>DB 증분백업(binlog): <code>/backup/binlog</code></li>
+</ul>
+<h3 id="readme-129-github-조직관리-가이드">12.9 GitHub 조직관리 가이드</h3>
+<ul>
+<li>Organization 생성, 저장소 이전, 멤버/팀 권한(Read/Write/Admin) 분리</li>
+<li>서버 연동은 HTTPS+PAT 또는 SSH 중 하나로 통일</li>
+<li><code>main</code> 브랜치 보호(force push 금지/PR 리뷰) 권장</li>
+<li>PAT/SSH 개인키를 README/코드/스크립트에 직접 기록하지 않기</li>
+</ul>
+<h2 id="readme-13-운영-보안-가이드">13. 운영 보안 가이드</h2>
 <ul>
 <li><code>.env</code> 및 민감한 키/토큰/패스워드는 저장소에 커밋하지 않습니다.</li>
 <li>README에는 실제 운영 계정, 실제 도메인 내부정보, 비밀키를 기록하지 않습니다.</li>
 <li>로컬 개발용 라우트(<code>_dev/*</code>)는 운영에서 노출되지 않도록 환경 정책을 유지합니다.</li>
 <li>메일/로그는 운영 추적용으로만 활용하고 개인정보 최소 수집 원칙을 지킵니다.</li>
 </ul>
-<h2 id="readme-13-기능-확장-시-체크리스트">13. 기능 확장 시 체크리스트</h2>
+<h2 id="readme-14-기능-확장-시-체크리스트">14. 기능 확장 시 체크리스트</h2>
 <p>기능 추가 시 아래 순서로 보면 소스 탐색이 빠릅니다.</p>
 <ol>
 <li><code>routes/*</code>에서 엔드포인트 위치 확인</li>
@@ -567,7 +806,7 @@ npm run dev</code></pre></div>
 <li><code>views/*</code> 화면 및 <code>emails/*</code> 템플릿 확인</li>
 </ol>
 <p>이 순서를 기준으로 보면 기능이 커져도 추적 경로가 안정적으로 유지됩니다.</p>
-<h2 id="readme-14-홈인트로-퍼블리싱-가이드">14. 홈/인트로 퍼블리싱 가이드</h2>
+<h2 id="readme-15-홈인트로-퍼블리싱-가이드">15. 홈/인트로 퍼블리싱 가이드</h2>
 <p>향후 퍼블리싱 업데이트 시 아래 기준을 유지하면 브랜드 일관성을 지키기 쉽습니다.</p>
 <h3 id="readme-141-페이지-역할-분리">14.1 페이지 역할 분리</h3>
 <ul>
@@ -621,9 +860,11 @@ npm run dev</code></pre></div>
 <li>섹션 삭제/추가 시 <code>home.js</code>, <code>intro.js</code>의 앵커/네비게이션 동작 동시 점검</li>
 <li>문구는 &quot;성장 + 확장 + 운영&quot; 3축을 유지</li>
 </ul>
-<h2 id="readme-15-마무리-한-줄">15. 마무리 한 줄</h2>
+<h2 id="readme-16-마무리-한-줄">16. 마무리 한 줄</h2>
 <p>티에이치스터디그룹은 하나의 사이트가 아니라, 개발자로서의 성장 과정을 담는 플랫폼이다.</p>
-    </div>
+
+      </div>
+    </details>
   </div>
 </section>
 
@@ -632,11 +873,22 @@ npm run dev</code></pre></div>
 </footer>
 
 <script>
-  function copyFrom(sel){
+  function copyFrom(sel, btn){
     const el = document.querySelector(sel);
-    if(!el) return;
+    if(!el || !btn) return;
     const txt = el.innerText;
-    navigator.clipboard.writeText(txt).then(()=>{});
+    const original = btn.textContent;
+    navigator.clipboard.writeText(txt).then(()=>{
+      btn.textContent = '복사됨';
+      btn.disabled = true;
+      setTimeout(()=>{
+        btn.textContent = original;
+        btn.disabled = false;
+      }, 1300);
+    }).catch(()=>{
+      btn.textContent = '실패';
+      setTimeout(()=>{ btn.textContent = original; }, 1300);
+    });
   }
 </script>
 </body>
