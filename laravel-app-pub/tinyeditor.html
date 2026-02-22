@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>TinyMCE CDN 테스트 에디터</title>
+
+    <!-- TinyMCE CDN (no-api-key → 테스트용) -->
+    <!-- 실제 서비스용이면 no-api-key 대신 tiny에서 발급받은 API 키 넣으면 됨 -->
+    <script src="https://cdn.tiny.cloud/1/9p5cqtxuhjll5l02le5i6xzo74jvjdonhhv40aw0oa2n8fmm/tinymce/8/tinymce.min.js" referrerpolicy="origin" crossorigin="anonymous"></script>
+
+    <style>
+        body {
+            max-width: 900px;
+            margin: 40px auto;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+        h1 { margin-bottom: 10px; }
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+
+<h1>TinyMCE CDN 데모 (코드블록 / 이미지 / 동영상 링크)</h1>
+
+<form>
+    <!-- 제목 -->
+    <p>
+        제목<br>
+        <input type="text" name="title" placeholder="제목을 입력하세요">
+    </p>
+
+    <!-- 에디터가 될 textarea -->
+    <p>
+        내용<br>
+        <textarea id="editor" name="content" rows="15"></textarea>
+    </p>
+
+    <p>
+        <button type="button" onclick="alert('이 HTML은 데모용이라 서버 저장은 안 됨 😎');">
+            저장 (데모)
+        </button>
+    </p>
+</form>
+
+<script>
+    tinymce.init({
+        selector: '#editor',      // 이 textarea를 에디터로 변환
+
+        language: 'ko',           // 한글 UI (필요 없으면 지워도 됨)
+
+        // 사용할 플러그인들 (무료 범위)
+        plugins: [
+            'lists',        // 리스트
+            'link',         // 링크
+            'image',        // 이미지
+            'media',        // 동영상/오디오 삽입 (유튜브 등)
+            'table',        // 표
+            'code',         // HTML 소스 보기
+            'codesample',   // 코드블록
+            'fullscreen',   // 전체 화면
+            'preview',      // 미리보기
+            'searchreplace' // 찾기/바꾸기
+        ],
+
+        // 툴바에 보여줄 버튼들
+        toolbar: [
+            'undo redo | blocks | bold italic underline | forecolor backcolor |',
+            'alignleft aligncenter alignright alignjustify | bullist numlist outdent indent |',
+            'link image media table | codesample code | fullscreen preview'
+        ].join(' '),
+
+        // 에디터 높이
+        height: 500,
+
+        // 이미지 기본 동작: base64로 에디터 안에 바로 저장 (서버 업로드 없음)
+        // -> HTML만 테스트할 때 편함. 나중에 라라벨이랑 연동하면 여기 설정 바꿔주면 됨.
+        images_upload_handler: function (blobInfo, success, failure) {
+            // 이 데모에서는 실제 서버 업로드 안 하고,
+            // 브라우저 메모리에만 base64 데이터로 넣는다.
+            const base64 = blobInfo.base64();
+            const mime = blobInfo.blob().type;
+            success('data:' + mime + ';base64,' + base64);
+        },
+
+        // 코드블록에서 사용할 언어 목록 (필요 없는 건 빼도 됨)
+        codesample_languages: [
+            {text: 'HTML/XML', value: 'markup'},
+            {text: 'JavaScript', value: 'javascript'},
+            {text: 'PHP', value: 'php'},
+            {text: 'Python', value: 'python'},
+            {text: 'Java', value: 'java'},
+            {text: 'C', value: 'c'},
+            {text: 'C++', value: 'cpp'},
+            {text: 'C#', value: 'csharp'},
+            {text: 'CSS', value: 'css'},
+            {text: 'Shell', value: 'bash'}
+        ]
+    });
+</script>
+
+</body>
+</html>
